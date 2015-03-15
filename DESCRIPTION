@@ -1,0 +1,18 @@
+Package: webtools
+Type: Package
+Title: A package of tools for reading, processing and formatting request log data
+Version: 1.0
+Date: 2015-03-14
+Author: Oliver Keyes
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+Description: R is used by a vast array of people for a vast array of purposes - including web
+  analytics. This package contains functions for consuming and munging various common forms of
+  request log, including the Common and Combined Web Log formats, along with a URL decoder
+  and encoder, component extractors, and IP/X-Forwarded-For normalisers to enable further
+  analysis such as geolocation.
+License: MIT + file LICENSE
+Suggests: testthat
+LinkingTo: Rcpp
+Imports:
+  Rcpp,
+  readr
