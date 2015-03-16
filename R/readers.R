@@ -102,7 +102,7 @@ read_combined <- function(file, has_header = FALSE){
 }
 
 read_squid <- function(file, has_header = FALSE){
-  
+  #Timestamp Elapsed Client Action/Code Size Method URI Ident Hierarchy/From Content
 }
 
 read_varnish <- function(file, has_header = FALSE){
