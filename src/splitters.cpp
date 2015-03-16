@@ -7,13 +7,18 @@ List internal_split(std::list < std::vector < std::string > > requests, std::vec
   int names_size = names.size();
   int in_size = requests.size();
   IntegerVector rownames(in_size);
+  rownames = Rcpp::seq(1,in_size);
   List output;
    
   for(int i = 0; i < names_size; i++){
     std::list < std::vector < std::string > >::iterator iterator;
-    std::vector < std::string > holding(in_size);
+    std::vector < std::string > holding;
     for(iterator = requests.begin(); iterator != requests.end(); ++iterator){
-      holding.push_back(iterator[i]);
+      if((*iterator).size() == names_size){
+        holding.push_back((*iterator)[i]);
+      } else {
+        holding.push_back("");
+      }
     }
     output.push_back(holding);
   }

@@ -30,7 +30,8 @@
 #'@return a data.frame consisting of seven fields, as discussed above, with normalised
 #'timestamps.
 #'
-#'@seealso \code{\link{read_combined}} for the /Combined/ Log Format.
+#'@seealso \code{\link{read_combined}} for the /Combined/ Log Format, and
+#'\code{\link{split_clf_requests}} for splitting out the "requests" field.
 #'@examples
 #'#Read in an example CLF-formatted file provided with \code{webtools}
 #'data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
@@ -72,7 +73,9 @@ read_clf <- function(file, has_header = FALSE){
 #'\code{read_combined} handles these fields, as well as the CLF-standard ones. This is (amongst
 #'other things) the default logging format for \href{http://nginx.org/}{nginx} servers
 #'
-#'@seealso \code{\link{read_clf}} for the /Common/ Log Format.
+#'@seealso \code{\link{read_clf}} for the /Common/ Log Format, and
+#'\code{\link{split_clf_requests}} for splitting out the "requests" field.
+#'
 #'@examples
 #'#Read in an example Combined-formatted file provided with \code{webtools}
 #'data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))

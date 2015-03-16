@@ -20,13 +20,15 @@ the Combined Log Format also includes:
  \item{user_agent:} {the user agent of the user that made the request.}
 }
 
-\code{read_combined} handles these fields, as well as the CLF-standard ones.
+\code{read_combined} handles these fields, as well as the CLF-standard ones. This is (amongst
+other things) the default logging format for \href{http://nginx.org/}{nginx} servers
 }
 \examples{
 #Read in an example Combined-formatted file provided with \\code{webtools}
 data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
 }
 \seealso{
-\code{\link{read_clf}} for the /Common/ Log Format.
+\code{\link{read_clf}} for the /Common/ Log Format, and
+\code{\link{split_clf_requests}} for splitting out the "requests" field.
 }
 

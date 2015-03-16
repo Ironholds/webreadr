@@ -46,6 +46,7 @@ allows you to conveniently read these files, parsing the timestamps as it goes.
 data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
 }
 \seealso{
-\code{\link{read_combined}} for the /Combined/ Log Format.
+\code{\link{read_combined}} for the /Combined/ Log Format, and
+\code{\link{split_clf_requests}} for splitting out the "requests" field.
 }
 

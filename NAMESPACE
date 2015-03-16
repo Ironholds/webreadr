@@ -3,6 +3,7 @@
 export(read_clf)
 export(read_combined)
 export(sanitise_ips)
+export(split_clf_requests)
 export(url_decode)
 export(url_encode)
 import(readr)
