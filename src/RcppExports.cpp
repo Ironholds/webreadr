@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// internal_split
+List internal_split(std::list < std::vector < std::string > > requests, std::vector < std::string > names);
+RcppExport SEXP webtools_internal_split(SEXP requestsSEXP, SEXP namesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< std::list < std::vector < std::string > > >::type requests(requestsSEXP);
+    Rcpp::traits::input_parameter< std::vector < std::string > >::type names(namesSEXP);
+    __result = Rcpp::wrap(internal_split(requests, names));
+    return __result;
+END_RCPP
+}
 // sanitise_ips
 std::vector < std::string > sanitise_ips(std::vector < std::string > ip_addresses, std::vector < std::string > x_forwarded_fors);
 RcppExport SEXP webtools_sanitise_ips(SEXP ip_addressesSEXP, SEXP x_forwarded_forsSEXP) {
