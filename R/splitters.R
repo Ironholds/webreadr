@@ -16,9 +16,14 @@
 #'@examples
 #'#Grab CLF data and split out the request.
 #'data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
-#'requests <- split_clf_requests(data$request)
+#'requests <- split_clf(data$request)
 #'@export
-split_clf_requests <- function(requests){
+split_clf <- function(requests){
   internal_split(requests = strsplit(x = requests, split = " ", fixed = TRUE),
                  names = c("method", "asset", "protocol"))
+}
+
+split_squid <- function(status_codes){
+  internal_split(requests = strsplit(x = requests, split = "/", fixed = TRUE),
+                 names = c("squid_code", "http_status"))
 }

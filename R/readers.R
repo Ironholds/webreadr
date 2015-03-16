@@ -73,8 +73,13 @@ read_clf <- function(file, has_header = FALSE){
 #'\code{read_combined} handles these fields, as well as the CLF-standard ones. This is (amongst
 #'other things) the default logging format for \href{http://nginx.org/}{nginx} servers
 #'
+#'@param file the full path to the CLF-formatted file you want to read.
+#'
+#'@param has_header whether or not the file has a header row. Set to FALSE by
+#'default.
+#'
 #'@seealso \code{\link{read_clf}} for the /Common/ Log Format, and
-#'\code{\link{split_clf_requests}} for splitting out the "requests" field.
+#'\code{\link{split_clf}} for splitting out the "requests" field.
 #'
 #'@examples
 #'#Read in an example Combined-formatted file provided with \code{webtools}
@@ -101,8 +106,46 @@ read_combined <- function(file, has_header = FALSE){
   return(data[,!names(data) == "timestamp_junk"])
 }
 
+#'@title read Squid files
+#'@description the Squid default log formats are either the CLF - for which, use
+#'\code{\link{read_clf}} - or the "native" Squid format, which is described in more detail
+#'below. \code{read_squid} allows you to read the latter.
+#'
+#'@details
+#'
+#'The log format for Squid servers can be custom-set, but by default follows one of two
+#'patterns; it's either the Common Log Format (CLF), which you can read in with
+#'\code{\link{read_clf}}, or the "native log format", a Squid-specific format handled
+#'by this function. It consists of the fields:
+#'
+#'\itemize{
+#'  \item{timestamp:} {the timestamp identifying when the request was received. This is
+#'  stored (from the file's point of view) as a count of seconds, in UNIX time:
+#'  \code{read_squid} turns them into POSIXlt timestamps, assuming UTC as an
+#'  origin timezone.}
+#'  \item{time_elapsed:} the amount of time (in milliseconds) that the connection and fulfilment
+#'  of the request lasted for.
+#'  \item{ip_address:} {the IP address of the remote host making the request.}
+#'  \item{status_code:} {the status code and Squid response code associated with that request,
+#'  stored as a single field. This can be split into two distinct fields with \code{\link{split_squid}}}
+#'  \item{bytes_sent:} {the number of bytes sent}
+#'  \item{http_method:} {the HTTP method (POST, GET, etc) used.}
+#'  \item{url: }{the URL of the requested asset.}
+#'  \item{remote_user_ident:} {the \href{https://tools.ietf.org/html/rfc1413}{RFC 1413} remote
+#'  user identifier.}
+#'  \item{peer_info:} {the status of how forwarding to a peer server was handled and, if the
+#'  request was forwarded, the server it was sent to.}
+#'}
+#'
+#'@param file the full path to the CLF-formatted file you want to read.
+#'
+#'@param has_header whether or not the file has a header row. Set to FALSE by
+#'default.
+#'@export
 read_squid <- function(file, has_header = FALSE){
   #Timestamp Elapsed Client Action/Code Size Method URI Ident Hierarchy/From Content
+  #as.POSIXct(1268736919, origin="1970-01-01")
+  
 }
 
 read_varnish <- function(file, has_header = FALSE){

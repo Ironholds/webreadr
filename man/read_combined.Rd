@@ -6,6 +6,12 @@
 \usage{
 read_combined(file, has_header = FALSE)
 }
+\arguments{
+\item{file}{the full path to the CLF-formatted file you want to read.}
+
+\item{has_header}{whether or not the file has a header row. Set to FALSE by
+default.}
+}
 \description{
 read requests logs following the Combined Log Format.
 }
@@ -29,6 +35,6 @@ data <- read_combined(system.file("extdata/combined_log.clf", package = "webtool
 }
 \seealso{
 \code{\link{read_clf}} for the /Common/ Log Format, and
-\code{\link{split_clf_requests}} for splitting out the "requests" field.
+\code{\link{split_clf}} for splitting out the "requests" field.
 }
 

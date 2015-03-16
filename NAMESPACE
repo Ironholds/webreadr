@@ -2,8 +2,9 @@
 
 export(read_clf)
 export(read_combined)
+export(read_squid)
 export(sanitise_ips)
-export(split_clf_requests)
+export(split_clf)
 export(url_decode)
 export(url_encode)
 import(readr)
