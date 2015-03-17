@@ -19,8 +19,9 @@
 #'  \item{bytes_sent:} {the number of bytes sent}
 #'}
 #'
-#'While outdated as a standard, systems using the CLF are still around. \code{read_clf}
-#'allows you to conveniently read these files, parsing the timestamps as it goes.
+#'While outdated as a standard, systems using the CLF are still around; the Squid caching
+#'system, for example, uses the CLF as one of its default log formats (the other,
+#'the squid "native" format, can be read with \code{\link{read_squid}}).
 #'
 #'@param file the full path to the CLF-formatted file you want to read.
 #'
@@ -31,9 +32,9 @@
 #'timestamps.
 #'
 #'@seealso \code{\link{read_combined}} for the /Combined/ Log Format, and
-#'\code{\link{split_clf_requests}} for splitting out the "requests" field.
+#'\code{\link{split_clf}} for splitting out the "requests" field.
 #'@examples
-#'#Read in an example CLF-formatted file provided with \code{webtools}
+#'#Read in an example CLF-formatted file provided with the webtools package.
 #'data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
 #'@export
 read_clf <- function(file, has_header = FALSE){
@@ -82,7 +83,7 @@ read_clf <- function(file, has_header = FALSE){
 #'\code{\link{split_clf}} for splitting out the "requests" field.
 #'
 #'@examples
-#'#Read in an example Combined-formatted file provided with \code{webtools}
+#'#Read in an example Combined-formatted file provided with the webtools package.
 #'data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
 #'@export
 read_combined <- function(file, has_header = FALSE){
@@ -141,11 +142,30 @@ read_combined <- function(file, has_header = FALSE){
 #'
 #'@param has_header whether or not the file has a header row. Set to FALSE by
 #'default.
+#'
+#'@seealso \code{\link{read_clf}} for the Common Log Format (also used by Squids), and
+#'\code{\link{split_squid}} for splitting the "status_code" field into its component parts.
+#'
+#'@examples
+#'#Read in an example Squid file provided with the webtools package.
+#'data <- read_clf(system.file("extdata/log.squid", package = "webtools"))
 #'@export
 read_squid <- function(file, has_header = FALSE){
-  #Timestamp Elapsed Client Action/Code Size Method URI Ident Hierarchy/From Content
-  #as.POSIXct(1268736919, origin="1970-01-01")
-  
+  names <- c("timestamp", "time_elapsed", "ip_address", "status_code",
+             "bytes_sent","http_method", "url","remote_user_ident","peer_info")
+  col_types <- list(col_numeric(),
+                    col_integer(),
+                    col_character(),
+                    col_character(),
+                    col_integer(),
+                    col_character(),
+                    col_character(),
+                    col_character(),
+                    col_character())
+  data <- read_delim(file = file, delim = " ", escape_backslash = FALSE, col_names = names,
+                     col_types = col_types, skip = ifelse(has_header, 1, 0))
+  data$timestamp <- as.POSIXlt(data$timestamp, origin = "1970-01-01", tz = "UTC")
+  return(data)
 }
 
 read_varnish <- function(file, has_header = FALSE){

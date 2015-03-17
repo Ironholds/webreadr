@@ -42,4 +42,12 @@ by this function. It consists of the fields:
  request was forwarded, the server it was sent to.}
 }
 }
+\examples{
+#Read in an example Squid file provided with the webtools package.
+data <- read_clf(system.file("extdata/log.squid", package = "webtools"))
+}
+\seealso{
+\code{\link{read_clf}} for the Common Log Format (also used by Squids), and
+\code{\link{split_squid}} for splitting the "status_code" field into its component parts.
+}
 

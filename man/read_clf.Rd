@@ -38,15 +38,16 @@ the CLF is a standardised format for web request logs. It consists of the fields
  \item{bytes_sent:} {the number of bytes sent}
 }
 
-While outdated as a standard, systems using the CLF are still around. \code{read_clf}
-allows you to conveniently read these files, parsing the timestamps as it goes.
+While outdated as a standard, systems using the CLF are still around; the Squid caching
+system, for example, uses the CLF as one of its default log formats (the other,
+the squid "native" format, can be read with \code{\link{read_squid}}).
 }
 \examples{
-#Read in an example CLF-formatted file provided with \\code{webtools}
+#Read in an example CLF-formatted file provided with the webtools package.
 data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
 }
 \seealso{
 \code{\link{read_combined}} for the /Combined/ Log Format, and
-\code{\link{split_clf_requests}} for splitting out the "requests" field.
+\code{\link{split_clf}} for splitting out the "requests" field.
 }
 
