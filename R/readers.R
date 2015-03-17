@@ -148,7 +148,7 @@ read_combined <- function(file, has_header = FALSE){
 #'
 #'@examples
 #'#Read in an example Squid file provided with the webtools package.
-#'data <- read_clf(system.file("extdata/log.squid", package = "webtools"))
+#'data <- read_squid(system.file("extdata/log.squid", package = "webtools"))
 #'@export
 read_squid <- function(file, has_header = FALSE){
   names <- c("timestamp", "time_elapsed", "ip_address", "status_code",
@@ -166,12 +166,4 @@ read_squid <- function(file, has_header = FALSE){
                      col_types = col_types, skip = ifelse(has_header, 1, 0))
   data$timestamp <- as.POSIXlt(data$timestamp, origin = "1970-01-01", tz = "UTC")
   return(data)
-}
-
-read_varnish <- function(file, has_header = FALSE){
-  
-}
-
-read_aws <- function(file, has_header){
-  
 }
