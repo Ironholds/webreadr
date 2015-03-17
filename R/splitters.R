@@ -23,6 +23,29 @@ split_clf <- function(requests){
                  names = c("method", "asset", "protocol"))
 }
 
+#'@title split the "status_code" field in a Squid-formatted dataset.
+#'@description the Squid data format (which can be read in with
+#'\code{\link{read_squid}}) stores the squid response and the HTTP status
+#'code as a single field. \code{\link{split_squid}} allows you to split
+#'these into a data.frame of two distinct columns.
+#'
+#'@param status_codes a \code{status_code} column from a Squid file read in
+#'with \code{\link{read_squid}}
+#'
+#'@return a data.frame of two columns - "squid_code" and "http_status" -
+#'representing, respectively, the Squid response to the request and the
+#'HTTP status of it.
+#'
+#'@seealso \code{\link{read_squid}} for reading these files in,
+#'and \code{\link{split_clf}} for similar parsing of multi-field
+#'columns in Common/Combined Log Format (CLF) data.
+#'
+#'@examples
+#'#Read in an example Squid file provided with the webtools package, then split out the codes
+#'data <- read_clf(system.file("extdata/log.squid", package = "webtools"))
+#'status_splot <- split_squid(data$status_code)
+#'
+#'@export
 split_squid <- function(status_codes){
   internal_split(requests = strsplit(x = requests, split = "/", fixed = TRUE),
                  names = c("squid_code", "http_status"))
