@@ -47,6 +47,6 @@ split_clf <- function(requests){
 #'
 #'@export
 split_squid <- function(status_codes){
-  internal_split(requests = strsplit(x = requests, split = "/", fixed = TRUE),
+  internal_split(requests = strsplit(x = status_codes, split = "/", fixed = TRUE),
                  names = c("squid_code", "http_status"))
 }
