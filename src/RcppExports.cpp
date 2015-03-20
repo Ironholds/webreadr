@@ -40,14 +40,3 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// url_encode
-std::vector < std::string > url_encode(std::vector < std::string > urls);
-RcppExport SEXP webtools_url_encode(SEXP urlsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< std::vector < std::string > >::type urls(urlsSEXP);
-    __result = Rcpp::wrap(url_encode(urls));
-    return __result;
-END_RCPP
-}

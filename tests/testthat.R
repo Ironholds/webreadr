@@ -1,4 +1,4 @@
 library(testthat)
-library(logreader)
+library(webtools)
 
-test_check("logreader")
+test_check("webtools")

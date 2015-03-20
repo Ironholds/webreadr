@@ -24,62 +24,25 @@ sanitise_ips <- function(ip_addresses, x_forwarded_fors) {
     .Call('webtools_sanitise_ips', PACKAGE = 'webtools', ip_addresses, x_forwarded_fors)
 }
 
-#'@title Encode or decode a URI
-#'@description encodes or decodes a URI/URL
+#'@title decodes a vector of URLs
+#'@description Takes a vector of URLs and consistently decodes them, in
+#'a vectorised way and handling out-of-range characters (unlike \code{\link{URLdecode}})).
 #'
-#'@param urls a vector of URLs to decode or encode.
+#'@param urls a vector of URLs to decode.
 #'
-#'@details
-#'URL encoding and decoding is an essential prerequisite to proper web interaction
-#'and data analysis around things like server-side logs. The
-#'\href{http://tools.ietf.org/html/rfc3986}{relevant IETF RfC} mandates the percentage-encoding
-#'of non-Latin characters, including things like slashes, unless those are reserved.
-#'
-#'Base R provides \code{\link{URLdecode}} and \code{\link{URLencode}}, which handle
-#'URL encoding - in theory. In practise, they have a set of substantial problems
-#'that the urltools implementation solves:
-#'
-#'\itemize{
-#' \item{No vectorisation: }{Both base R functions operate on single URLs, not vectors of URLs.
-#'       This means that, when confronted with a vector of URLs that need encoding or
-#'       decoding, your only option is to loop from within R. This can be incredibly
-#'       computationally costly with large datasets. url_encode and url_decode are
-#'       implemented in C++ and entirely vectorised, allowing for a substantial
-#'       performance improvement.}
-#' \item{No scheme recognition: }{encoding the slashes in, say, http://, is a good way
-#'       of making sure your URL no longer works. Because of this, the only thing
-#'       you can encode in URLencode (unless you refuse to encode reserved characters)
-#'       is a partial URL, lacking the initial scheme, which requires additional operations
-#'       to set up and increases the complexity of encoding or decoding. url_encode
-#'       detects the protocol and silently splits it off, leaving it unencoded to ensure
-#'       that the resulting URL is valid.}
-#' \item{ASCII NULs: }{Server side data can get very messy and sometimes include out-of-range
-#'       characters. Unfortunately, URLdecode's response to these characters is to convert
-#'       them to NULs, which R can't handle, at which point your URLdecode call breaks.
-#'       \code{url_decode} simply ignores them.}
-#'}
-#'
-#'@return a character vector containing the encoded (or decoded) versions of "urls".
+#'@return a character vector containing the decoded versions of urls.
 #'
 #'@examples
 #'
 #'url_decode("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_%28logo%29.jpg")
-#'url_encode("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_(logo).jpg")
 #'
 #'\dontrun{
 #'#A demonstrator of the contrasting behaviours around out-of-range characters
 #'URLdecode("%gIL")
 #'url_decode("%gIL")
 #'}
-#'@rdname encoder
 #'@export
 url_decode <- function(urls) {
     .Call('webtools_url_decode', PACKAGE = 'webtools', urls)
-}
-
-#'@rdname encoder
-#'@export
-url_encode <- function(urls) {
-    .Call('webtools_url_encode', PACKAGE = 'webtools', urls)
 }
 
