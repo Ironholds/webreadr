@@ -2,8 +2,9 @@
 % Please edit documentation in R/webtools.R
 \name{webtools}
 \alias{webtools}
-\title{A library for reading, formatting and cleaning various common forms of web request log}
+\title{A library for reading, formatting and cleaning various common forms of web request log.}
 \description{
-A library for reading, formatting and cleaning various common forms of web request log
+see the \href{https://github.com/Ironholds/webtools/blob/master/vignettes/Introduction.Rmd}{introductory vignette}
+for more details!
 }
 
