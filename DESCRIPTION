@@ -11,8 +11,10 @@ Description: R is used by a vast array of people for a vast array of purposes - 
   and encoder, component extractors, and IP/X-Forwarded-For normalisers to enable further
   analysis such as geolocation.
 License: MIT + file LICENSE
-Suggests: testthat
+Suggests: testthat,
+    knitr
 LinkingTo: Rcpp
-Imports:
+Imports: 
   Rcpp,
   readr
+VignetteBuilder: knitr

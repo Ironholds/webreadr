@@ -1,0 +1,86 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{webtools}
+-->
+
+#Access log handling with webtools
+R, as a language, is used for analysing pretty much everything from genomic data to financial information. It's also
+used to analyse website access logs, and R lacks a good framework for doing that; the URL decoder isn't vectorised,
+the file readers don't have convenient defaults, and good luck normalising IP addresses at scale.
+
+Enter <code>webtools</code>, which contains convenient wrappers and functions for reading, munging and formatting
+data from access logs and other sources of web request data.
+
+### File reading
+Base R has read.delim, which is convenient but much slower for file reading than Hadley's new [readr](https://github.com/hadley/readr)
+package. <code>webtools</code> defines a set of wrapper functions around readr's <code>read_delim</code>, designed
+for common access log formats.
+
+The most common historical log format is the [Combined Log Format](http://httpd.apache.org/docs/1.3/logs.html#combined); this is used as one of the default formats for [nginx](http://nginx.org/) and the [Varnish caching system](https://www.varnish-cache.org/docs/trunk/reference/varnishncsa.html). <code>webtools</code>
+lets you read it in trivially with <code>read\_combined</code>:
+
+```{r}
+library(webtools)
+#read in an example file that comes with the webtools package
+data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+#And if we look at the format...
+str(data)
+```
+
+As you can see, the types have been appropriately set, the date/times have been parsed, and sensible header names have been set.
+The same thing can be done with the Common Log Format, used by Apache default configurations and as one of the defaults for
+Squid caching servers, using <code>read\_clf</code>. The other squid default format can be read with <code>read\_squid</code>.
+
+### Splitting combined fields
+
+One of the things you'll notice about the example above is the "request" field - it contains not only the actual asset
+requested, but also the HTTP method used and the protocol used. That's pretty inconvenient for people looking to do something
+productive with the data.
+
+Normally you'd split each field out into a list, and then curse and recombine them into a data.frame and hope that
+doing so didn't hit R's memory limit during the "unlist" stage, and it'd take an absolute age. Or, you could just split them
+up directly into a data frame using <code>split\_clf</code>:
+
+```{r}
+requests <- split_clf(data$request)
+str(requests)
+```
+This is faster than manual splitting-and-data.frame-ing, easier on the end user, and less likely to end in unexpected segfaults with
+large datasets. A similar function, <code>split\_squid</code>, exists for the status_code field in files read in with
+<code>read_squid</code>, which suffer from a similar problem.
+
+## URL decoding
+URLs and URL fragments tend to come encoded. Base R provides <code>URLdecode</code> to turn them from a percentage-encoded
+URL into a regular string. This is primarily designed to enable connections, however, and so isn't vectorised. That makes it
+impractical to use on a large vector of URLs. In addition, it breaks if the decoded value is out of range:
+
+```{r, eval = FALSE}
+URLdecode("test%gIL")
+#Error in rawToChar(out) : embedded nul in string: '\0L'
+#In addition: Warning message:
+#In URLdecode("%gIL") : out-of-range values treated as 0 in coercion to raw
+```
+
+<code>webtools</code> provides <code>decode_url</code>, which *is* vectorised and *doesn't* break on out-of-range characters.
+This is identical to the functionality provided by [urltools](https://github.com/Ironholds/urltools), a package for general URL
+handling you should absolutely check out and use for everything.
+
+## IP normalisation
+A de-facto standard for HTTP requests is the X-Forwarded-For field - used to pass the origin IP of a request, when the request
+comes through a proxy. These chains can get pretty long with multiple proxies, and makes geolocation a pain, because you have to parse
+the XFF field (which may not always be accurate) when it's populated.
+
+<code>normalise_ips</code> takes a vector of IP addresses and a vector of X-Forwarded-For fields, and sensibly identifies the most
+probably "real" origin IP:
+
+```{r}
+normalise_ips("192.168.0.1", "193.168.0.1,230.98.107.1")
+```
+
+This "sensible identification" consists of eliminating IPs that fall within the ranges reserved for IP tests, avoiding including
+spoof IP addresses.
+
+## Other ideas
+If you have ideas for other URL handlers that would make access log processing easier, the best approach
+is to either [request it](https://github.com/Ironholds/webtools/issues) or [add it](https://github.com/Ironholds/webtools/pulls)!
+

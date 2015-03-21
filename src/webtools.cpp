@@ -1,4 +1,4 @@
-#include "normalise_ips.h"
+#include "ip_handlers.h"
 #include "encoding.h"
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -19,9 +19,9 @@ using namespace Rcpp;
 //'
 //'@export
 // [[Rcpp::export]]
-std::vector < std::string > sanitise_ips(std::vector < std::string > ip_addresses,
+std::vector < std::string > normalise_ips(std::vector < std::string > ip_addresses,
                                          std::vector < std::string > x_forwarded_fors){
-  normalise_ips norm_inst;
+  ip_handlers ip_inst;
   std::vector < std::string> non_xffs = {"", "-"};
   
   if(ip_addresses.size() != x_forwarded_fors.size()){
@@ -29,7 +29,7 @@ std::vector < std::string > sanitise_ips(std::vector < std::string > ip_addresse
   }
   for(int i = 0; i < ip_addresses.size(); i++){
     if(std::find(non_xffs.begin(), non_xffs.end(), x_forwarded_fors[i]) == non_xffs.end()){
-      ip_addresses[i] = norm_inst.extract_origin(x_forwarded_fors[i]);
+      ip_addresses[i] = ip_inst.extract_origin(x_forwarded_fors[i]);
     }
   }
   return ip_addresses;
@@ -45,16 +45,16 @@ std::vector < std::string > sanitise_ips(std::vector < std::string > ip_addresse
 //'
 //'@examples
 //'
-//'url_decode("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_%28logo%29.jpg")
+//'decode_url("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_%28logo%29.jpg")
 //'
 //'\dontrun{
 //'#A demonstrator of the contrasting behaviours around out-of-range characters
 //'URLdecode("%gIL")
-//'url_decode("%gIL")
+//'decode_url("%gIL")
 //'}
 //'@export
 // [[Rcpp::export]]
-std::vector < std::string > url_decode(std::vector < std::string > urls){
+std::vector < std::string > decode_url(std::vector < std::string > urls){
   
   //Measure size, instantiate class
   int input_size = urls.size();

@@ -10,7 +10,7 @@ using namespace Rcpp;
  * A class for normalising IP addresses that are provided
  * with an accompanying x_forwarded_for field
  */
-class normalise_ips{
+class ip_handlers{
   
   private:
     

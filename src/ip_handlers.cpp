@@ -1,15 +1,15 @@
 #include <Rcpp.h>
 #include <iostream>
 #include <sstream>
-#include "normalise_ips.h"
+#include "ip_handlers.h"
 using namespace Rcpp;
 
-std::string normalise_ips::lowercase_xff(std::string xff){
+std::string ip_handlers::lowercase_xff(std::string xff){
   std::transform(xff.begin(), xff.end(), xff.begin(), ::tolower);
   return xff;
 }
 
-std::vector < std::string > normalise_ips::tokenise(std::string xff){
+std::vector < std::string > ip_handlers::tokenise(std::string xff){
   xff = lowercase_xff(xff);
   xff.erase(remove_if(xff.begin(), xff.end(), isspace), xff.end());
   std::vector < std::string > output;
@@ -22,7 +22,7 @@ std::vector < std::string > normalise_ips::tokenise(std::string xff){
   return output;
 }
 
-bool normalise_ips::is_real_ip(std::string possible_ip){
+bool ip_handlers::is_real_ip(std::string possible_ip){
   std::vector < std::string > bad_ipv4s {"192.0.2", "198.51.100","203.0.113"};
   size_t ipv4_match = possible_ip.rfind(".");
   if(ipv4_match != std::string::npos){
@@ -45,7 +45,7 @@ bool normalise_ips::is_real_ip(std::string possible_ip){
   return false;
 }
 
-std::string normalise_ips::extract_origin(std::string xff){
+std::string ip_handlers::extract_origin(std::string xff){
   
   std::vector < std::string > holding = tokenise(xff);
   int hold_size = holding.size();

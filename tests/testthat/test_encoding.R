@@ -1,13 +1,13 @@
 context("URL encoding tests")
 
 test_that("Check decoding handles spaces",{
-  expect_equal(url_decode("foo%20bar"),"foo bar")
+  expect_equal(decode_url("foo%20bar"),"foo bar")
 })
 
 test_that("Check decoding handles double quotes",{
-  expect_equal(url_decode("foo%22bar"),"foo\"bar")
+  expect_equal(decode_url("foo%22bar"),"foo\"bar")
 })
 
 test_that("Check decoding handles ASCII NULs", {
-  expect_equal(url_decode("0;%20@%gIL"), "0; @")
+  expect_equal(decode_url("0;%20@%gIL"), "0; @")
 })

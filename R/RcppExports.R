@@ -20,8 +20,8 @@ internal_split <- function(requests, names) {
 #'where appropriate
 #'
 #'@export
-sanitise_ips <- function(ip_addresses, x_forwarded_fors) {
-    .Call('webtools_sanitise_ips', PACKAGE = 'webtools', ip_addresses, x_forwarded_fors)
+normalise_ips <- function(ip_addresses, x_forwarded_fors) {
+    .Call('webtools_normalise_ips', PACKAGE = 'webtools', ip_addresses, x_forwarded_fors)
 }
 
 #'@title decodes a vector of URLs
@@ -34,15 +34,15 @@ sanitise_ips <- function(ip_addresses, x_forwarded_fors) {
 #'
 #'@examples
 #'
-#'url_decode("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_%28logo%29.jpg")
+#'decode_url("https://en.wikipedia.org/wiki/File:Vice_City_Public_Radio_%28logo%29.jpg")
 #'
 #'\dontrun{
 #'#A demonstrator of the contrasting behaviours around out-of-range characters
 #'URLdecode("%gIL")
-#'url_decode("%gIL")
+#'decode_url("%gIL")
 #'}
 #'@export
-url_decode <- function(urls) {
-    .Call('webtools_url_decode', PACKAGE = 'webtools', urls)
+decode_url <- function(urls) {
+    .Call('webtools_decode_url', PACKAGE = 'webtools', urls)
 }
 

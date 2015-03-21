@@ -17,26 +17,26 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// sanitise_ips
-std::vector < std::string > sanitise_ips(std::vector < std::string > ip_addresses, std::vector < std::string > x_forwarded_fors);
-RcppExport SEXP webtools_sanitise_ips(SEXP ip_addressesSEXP, SEXP x_forwarded_forsSEXP) {
+// normalise_ips
+std::vector < std::string > normalise_ips(std::vector < std::string > ip_addresses, std::vector < std::string > x_forwarded_fors);
+RcppExport SEXP webtools_normalise_ips(SEXP ip_addressesSEXP, SEXP x_forwarded_forsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< std::vector < std::string > >::type ip_addresses(ip_addressesSEXP);
     Rcpp::traits::input_parameter< std::vector < std::string > >::type x_forwarded_fors(x_forwarded_forsSEXP);
-    __result = Rcpp::wrap(sanitise_ips(ip_addresses, x_forwarded_fors));
+    __result = Rcpp::wrap(normalise_ips(ip_addresses, x_forwarded_fors));
     return __result;
 END_RCPP
 }
-// url_decode
-std::vector < std::string > url_decode(std::vector < std::string > urls);
-RcppExport SEXP webtools_url_decode(SEXP urlsSEXP) {
+// decode_url
+std::vector < std::string > decode_url(std::vector < std::string > urls);
+RcppExport SEXP webtools_decode_url(SEXP urlsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< std::vector < std::string > >::type urls(urlsSEXP);
-    __result = Rcpp::wrap(url_decode(urls));
+    __result = Rcpp::wrap(decode_url(urls));
     return __result;
 END_RCPP
 }
