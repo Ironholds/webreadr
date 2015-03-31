@@ -167,3 +167,20 @@ read_squid <- function(file, has_header = FALSE){
   data$timestamp <- as.POSIXlt(data$timestamp, origin = "1970-01-01", tz = "UTC")
   return(data)
 }
+
+aws_header_select <- function(file){
+  field_names <- c("date", "time", "x-edge-location", "sc-bytes", "c-ip", "cs-method",
+                   "cs(Host)", "cs-uri-stem", "sc-status", "cs(Referer)", "cs(User-Agent)", "cs-uri-query",
+                   "cs(Cookie)", "x-edge-result-type", "x-edge-request-id", "x-host-header", "cs-protocol", "cs-bytes",
+                   "time-taken")
+  
+  new_names <- c("date", "time", "edge_location", "bytes_sent", "ip_address", "http_method", "host", "path",
+                 "status_code", "referer", "user_agent", "query", "cookie", "result_type", "request_id",
+                 "header", "protocol", "bytes_received", "time_elapsed")
+  
+  collectors <- list(col_character(), col_character(), col_character(), col_integer(), col_character(),
+                     col_character(), col_character(), col_character(), col_integer(), col_character(),
+                     col_character(), col_character(), col_character(), col_character(), col_character(),
+                     col_character(), col_character(), col_character(), col_numeric())
+  header_fields <- unlist(strsplit(read_lines(file, n_max = 2)[2], " "))[-1]  
+}
