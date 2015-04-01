@@ -2,6 +2,7 @@
 
 export(decode_url)
 export(normalise_ips)
+export(read_aws)
 export(read_clf)
 export(read_combined)
 export(read_squid)

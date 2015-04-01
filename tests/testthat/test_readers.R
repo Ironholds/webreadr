@@ -30,3 +30,10 @@ test_that("Combined Log Format files can be read",{
   expect_equal(ncol(split_data), 2)
   expect_equal(nrow(split_data), 121)
 })
+
+test_that("AWS files can be read",{
+  data <- read_aws(system.file("extdata/log.aws", package = "webtools"))
+  expect_equal(ncol(data), 18)
+  expect_equal(nrow(data), 2)
+  expect_equal(class(data$date), c("POSIXlt","POSIXt"))
+})
