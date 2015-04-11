@@ -38,24 +38,18 @@
 #'data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
 #'@export
 read_clf <- function(file, has_header = FALSE){
-  names <- c("ip_address", "remote_user_ident", "local_user_ident", "timestamp",
-             "timestamp_junk","request", "status_code","bytes_sent")
+  names <- c("ip_address", "remote_user_ident", "local_user_ident", "timestamp"
+             ,"request", "status_code","bytes_sent")
   col_types <- list(col_character(),
                     col_character(),
                     col_character(),
-                    col_character(),
-                    col_character(),
+                    col_datetime(format = "%d/%b/%Y:%H:%M:%S %z"),
                     col_character(),
                     col_integer(),
                     col_integer())
 
-  data <- read_delim(file = file, delim = " ", escape_backslash = FALSE, col_names = names,
-                    col_types = col_types, skip = ifelse(has_header, 1, 0))
-  
-  #This is ugly. Due to CDF silliness ("oh, it's space separated! Except that one space that
-  #isn't a separator") we can't take full advantage of readr's awesome and have to do a fragment of it manually.
-  data$timestamp <- strptime(paste0(data$timestamp,data$timestamp_junk), format = "[%d/%b/%Y:%H:%M:%S %z]")
-  return(data[,!names(data) == "timestamp_junk"])
+  data <- read_log(file = file, col_names = names, col_types = col_types, skip = ifelse(has_header, 1, 0))
+  return(data)
 }
 
 #'@title read Combined Log Format files
@@ -88,23 +82,19 @@ read_clf <- function(file, has_header = FALSE){
 #'@export
 read_combined <- function(file, has_header = FALSE){
   names <- c("ip_address", "remote_user_ident", "local_user_ident", "timestamp",
-             "timestamp_junk","request", "status_code","bytes_sent","referer","user_agent")
+             "request", "status_code","bytes_sent","referer","user_agent")
   col_types <- list(col_character(),
                     col_character(),
                     col_character(),
-                    col_character(),
-                    col_character(),
+                    col_datetime("%d/%b/%Y:%H:%M:%S %z"),
                     col_character(),
                     col_integer(),
                     col_integer(),
                     col_character(),
                     col_character())
   
-  data <- read_delim(file = file, delim = " ", escape_backslash = FALSE, col_names = names,
-                     col_types = col_types, skip = ifelse(has_header, 1, 0))
-  #See read_clf()
-  data$timestamp <- strptime(paste0(data$timestamp,data$timestamp_junk), format = "[%d/%b/%Y:%H:%M:%S %z]")
-  return(data[,!names(data) == "timestamp_junk"])
+  data <- read_log(file = file, col_names = names, col_types = col_types, skip = ifelse(has_header, 1, 0))
+  return(data)
 }
 
 #'@title read Squid files
@@ -162,8 +152,7 @@ read_squid <- function(file, has_header = FALSE){
                     col_character(),
                     col_character(),
                     col_character())
-  data <- read_delim(file = file, delim = " ", escape_backslash = FALSE, col_names = names,
-                     col_types = col_types, skip = ifelse(has_header, 1, 0))
+  data <- read_log(file = file, col_names = names, col_types = col_types, skip = ifelse(has_header, 1, 0))
   data$timestamp <- as.POSIXlt(data$timestamp, origin = "1970-01-01", tz = "UTC")
   return(data)
 }
