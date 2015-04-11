@@ -13,7 +13,9 @@ with \code{\link{read_squid}}}
 \value{
 a data.frame of two columns - "squid_code" and "http_status" -
 representing, respectively, the Squid response to the request and the
-HTTP status of it.
+HTTP status of it.  In cases where the status code is not intact (containing,
+for example, just the squid_code) a row of empty strings will currently be returned.
+In the future, this will be somewhat improved.
 }
 \description{
 the Squid data format (which can be read in with

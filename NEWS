@@ -1,6 +1,8 @@
 Version 0.2.0 [WIP]
 -------------------------------------------------------------------------
 *Add an AWS log file reader, read_aws, at Hadley's suggestion.
+*Convert log readers to use readr's read_log, eliminating some complexity and R-side parsing
+*Documentation around split_* improved to make clear what happens with non-intact requests.
 
 Version 0.1.0
 -------------------------------------------------------------------------

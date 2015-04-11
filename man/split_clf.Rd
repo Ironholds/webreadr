@@ -13,7 +13,10 @@ split_clf(requests)
 \value{
 a data.frame of three columns - "method", "asset" and "protocol" -
 representing, respectively, the HTTP method used ("GET"), the asset requested
-("/favicon.ico") and the protocol used ("HTTP/1.0").
+("/favicon.ico") and the protocol used ("HTTP/1.0"). In cases where
+the request is not intact (containing, for example, just the protocol
+or just the asset) a row of empty strings will currently be returned.
+In the future, this will be somewhat improved.
 }
 \description{
 CLF (Combined/Common Log Format) files store the HTTP method, protocol

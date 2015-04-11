@@ -8,7 +8,10 @@
 #'
 #'@return a data.frame of three columns - "method", "asset" and "protocol" - 
 #'representing, respectively, the HTTP method used ("GET"), the asset requested
-#'("/favicon.ico") and the protocol used ("HTTP/1.0").
+#'("/favicon.ico") and the protocol used ("HTTP/1.0"). In cases where
+#'the request is not intact (containing, for example, just the protocol
+#'or just the asset) a row of empty strings will currently be returned.
+#'In the future, this will be somewhat improved.
 #'
 #'@seealso \code{\link{read_clf}} and \code{\link{read_combined}} for reading
 #'in these files.
@@ -34,7 +37,9 @@ split_clf <- function(requests){
 #'
 #'@return a data.frame of two columns - "squid_code" and "http_status" -
 #'representing, respectively, the Squid response to the request and the
-#'HTTP status of it.
+#'HTTP status of it.  In cases where the status code is not intact (containing, 
+#'for example, just the squid_code) a row of empty strings will currently be returned.
+#'In the future, this will be somewhat improved.
 #'
 #'@seealso \code{\link{read_squid}} for reading these files in,
 #'and \code{\link{split_clf}} for similar parsing of multi-field
