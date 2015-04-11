@@ -20,3 +20,4 @@ A CRAN release will come when it's more mature as a package.
 * R >= 3.1.0.
 * [readr](https://github.com/hadley/readr)
 * [Rcpp](http://cran.rstudio.com/web/packages/Rcpp/)
+* [stringi](http://cran.r-project.org/web/packages/stringi/)

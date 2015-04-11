@@ -2,6 +2,7 @@
 
 export(decode_url)
 export(normalise_ips)
+export(parse_r_agent)
 export(read_aws)
 export(read_clf)
 export(read_combined)
@@ -10,4 +11,5 @@ export(split_clf)
 export(split_squid)
 import(readr)
 importFrom(Rcpp,sourceCpp)
+importFrom(stringi,stri_extract_first)
 useDynLib(webtools)
