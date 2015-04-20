@@ -22,7 +22,7 @@ class ip_handlers{
      * @return an integer representing the decimal value of that
      * IP address.
      */
-    unsigned long ip4_to_numeric(std::vector < std::string > ip_address);
+    unsigned int ip4_to_numeric(std::vector < std::string > ip_address);
     
     /**
      * Lower-case a field
@@ -81,6 +81,6 @@ class ip_handlers{
      * @return an integer representing the decimal value of that
      * IP address.
      */
-    unsigned long ip_to_numeric_internal(std::vector < std::string > ip_address);
+    unsigned int ip_to_numeric_internal(std::vector < std::string > ip_address);
 };
 #endif

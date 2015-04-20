@@ -4,6 +4,7 @@ Version 0.2.0 [WIP]
 *Convert log readers to use readr's read_log, eliminating some complexity and R-side parsing
 *Documentation around split_* improved to make clear what happens with non-intact requests.
 *Add a prototype R user agent parser.
+*Add ip_to_numeric to convert human-readable IPv4s to numeric values.
 
 Version 0.1.0
 -------------------------------------------------------------------------

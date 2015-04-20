@@ -70,8 +70,8 @@ std::vector < std::string > decode_url(std::vector < std::string > urls){
 }
 
 // [[Rcpp::export]]
-std::vector < unsigned long > ip_to_numeric_(std::list < std::vector < std::string > > ip_addresses){
-  std::vector < unsigned long > output(ip_addresses.size());
+std::vector < unsigned int  > ip_to_numeric_(std::list < std::vector < std::string > > ip_addresses){
+  std::vector < unsigned int > output(ip_addresses.size());
   ip_handlers ip_inst;
   int i = 0;
   for (std::list < std::vector < std::string > >::const_iterator it = ip_addresses.begin(); it != ip_addresses.end(); ++it, ++i){

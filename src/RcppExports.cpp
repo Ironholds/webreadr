@@ -41,7 +41,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // ip_to_numeric_
-std::vector < unsigned long > ip_to_numeric_(std::list < std::vector < std::string > > ip_addresses);
+std::vector < unsigned int  > ip_to_numeric_(std::list < std::vector < std::string > > ip_addresses);
 RcppExport SEXP webtools_ip_to_numeric_(SEXP ip_addressesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;

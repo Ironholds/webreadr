@@ -4,9 +4,9 @@
 #include "ip_handlers.h"
 using namespace Rcpp;
 
-unsigned long ip_handlers::ip4_to_numeric(std::vector < std::string > ip_address){
+unsigned int ip_handlers::ip4_to_numeric(std::vector < std::string > ip_address){
   std::vector<int> ip_as_int(ip_address.size());
-  unsigned long output = 0;
+  unsigned int output = 0;
   try {
     std::transform(ip_address.begin(), ip_address.end(), ip_as_int.begin(), [](const std::string& val) {return stod(val);});
   }
@@ -64,7 +64,7 @@ bool ip_handlers::is_real_ip(std::string possible_ip){
   return false;
 }
 
-unsigned long ip_handlers::ip_to_numeric_internal(std::vector < std::string > ip_address){
+unsigned int ip_handlers::ip_to_numeric_internal(std::vector < std::string > ip_address){
   if(ip_address.size() == 4){
     return ip4_to_numeric(ip_address);
   }
