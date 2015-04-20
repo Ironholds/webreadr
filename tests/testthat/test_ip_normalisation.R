@@ -1,7 +1,7 @@
 context("Test IP normalisation")
 
 test_that("IP normalisation works, full stop",{
-  expect_that(normalise_ips("192.168.0.1", "193.168.0.1,230.98.107.1"),
+  expect_that(normalise_ips("192.168.0.1", "193.168.0.1, 230.98.107.1"),
               equals("193.168.0.1"))
 })
 
