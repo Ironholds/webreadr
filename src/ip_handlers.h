@@ -15,6 +15,26 @@ class ip_handlers{
   private:
     
     /**
+     * Convert an IPv4 IP address to its decimal representation.
+     * 
+     * @param ip_address an IPv4 IP address, as a vector
+     * 
+     * @return an integer representing the decimal value of that
+     * IP address.
+     */
+    int ip4_to_numeric(std::vector < std::string > ip_address);
+    
+    /**
+     * Convert an IPv6 IP address to its decimal representation.
+     * 
+     * @param ip_address an IPv6 IP address, as a vector
+     * 
+     * @return an integer representing the decimal value of that
+     * IP address.
+     */
+    int ip6_to_numeric(std::vector < std::string > ip_address);
+    
+    /**
      * Lower-case an xff field
      * 
      * @param xff a string representing a standard x_forwarded_for
@@ -61,5 +81,16 @@ class ip_handlers{
      */
     std::string extract_origin(std::string x_forwarded_for);
     
+    /**
+     * Convert an IP address to its decimal representation.
+     * 
+     * @param ip_address an IP address, as a vector. This is
+     * then determined to be either an IPv4 or IPv6 address,
+     * and handled appropriately.
+     * 
+     * @return an integer representing the decimal value of that
+     * IP address.
+     */
+    int ip_to_decimal(std::vector < std::string > ip_address);
 };
 #endif
