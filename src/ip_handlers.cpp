@@ -4,13 +4,13 @@
 #include "ip_handlers.h"
 using namespace Rcpp;
 
-std::string ip_handlers::lowercase_xff(std::string xff){
-  std::transform(xff.begin(), xff.end(), xff.begin(), ::tolower);
-  return xff;
+std::string ip_handlers::lowercase_ip(std::string ip){
+  std::transform(ip.begin(), ip.end(), ip.begin(), ::tolower);
+  return ip;
 }
 
 std::vector < std::string > ip_handlers::tokenise(std::string xff){
-  xff = lowercase_xff(xff);
+  xff = lowercase_ip(xff);
   xff.erase(remove_if(xff.begin(), xff.end(), isspace), xff.end());
   std::vector < std::string > output;
   std::string holding;
@@ -45,6 +45,16 @@ bool ip_handlers::is_real_ip(std::string possible_ip){
   return false;
 }
 
+int ip_handlers::ip_to_decimal(std::vector < std::string > ip_address){
+  int in_size = ip_address.size();
+  if(in_size == 4){
+    return ip4_to_numeric(ip_address);
+  } else if(in_size == 8){
+    return ip6_to_numeric(ip_address);
+  }
+  return 0;
+}
+  
 std::string ip_handlers::extract_origin(std::string xff){
   
   std::vector < std::string > holding = tokenise(xff);

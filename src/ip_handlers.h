@@ -35,15 +35,15 @@ class ip_handlers{
     int ip6_to_numeric(std::vector < std::string > ip_address);
     
     /**
-     * Lower-case an xff field
+     * Lower-case a field
      * 
-     * @param xff a string representing a standard x_forwarded_for
+     * @param ip a string representing an IP address or standard x_forwarded_for
      * field - in other words, a series of comma-separated IP addresses.
      * 
      * @return the same field, but lower-cased, thus avoiding problems
      * when matching XFF subsets against RfC-reserved test ranges.
      */
-    std::string lowercase_xff(std::string xff);
+    std::string lowercase_ip(std::string ip);
     
     /**
      * A function for tokenising an x_forwarded_for field.
