@@ -22,17 +22,7 @@ class ip_handlers{
      * @return an integer representing the decimal value of that
      * IP address.
      */
-    int ip4_to_numeric(std::vector < std::string > ip_address);
-    
-    /**
-     * Convert an IPv6 IP address to its decimal representation.
-     * 
-     * @param ip_address an IPv6 IP address, as a vector
-     * 
-     * @return an integer representing the decimal value of that
-     * IP address.
-     */
-    int ip6_to_numeric(std::vector < std::string > ip_address);
+    unsigned long ip4_to_numeric(std::vector < std::string > ip_address);
     
     /**
      * Lower-case a field
@@ -91,6 +81,6 @@ class ip_handlers{
      * @return an integer representing the decimal value of that
      * IP address.
      */
-    int ip_to_decimal(std::vector < std::string > ip_address);
+    unsigned long ip_to_numeric_internal(std::vector < std::string > ip_address);
 };
 #endif

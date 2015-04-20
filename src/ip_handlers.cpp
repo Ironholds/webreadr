@@ -4,6 +4,25 @@
 #include "ip_handlers.h"
 using namespace Rcpp;
 
+unsigned long ip_handlers::ip4_to_numeric(std::vector < std::string > ip_address){
+  std::vector<int> ip_as_int(ip_address.size());
+  unsigned long output = 0;
+  try {
+    std::transform(ip_address.begin(), ip_address.end(), ip_as_int.begin(), [](const std::string& val) {return stod(val);});
+  }
+  catch(...){
+    return output;
+  }
+  
+  //If it didn't blow up converting to a numeric value, we can play the converting game!
+  output += (ip_as_int[0] * 16777216);
+  output += (ip_as_int[1] * 65536);
+  output += (ip_as_int[2] * 256);
+  output +=  ip_as_int[3];
+  
+  return output;
+}
+
 std::string ip_handlers::lowercase_ip(std::string ip){
   std::transform(ip.begin(), ip.end(), ip.begin(), ::tolower);
   return ip;
@@ -45,12 +64,9 @@ bool ip_handlers::is_real_ip(std::string possible_ip){
   return false;
 }
 
-int ip_handlers::ip_to_decimal(std::vector < std::string > ip_address){
-  int in_size = ip_address.size();
-  if(in_size == 4){
+unsigned long ip_handlers::ip_to_numeric_internal(std::vector < std::string > ip_address){
+  if(ip_address.size() == 4){
     return ip4_to_numeric(ip_address);
-  } else if(in_size == 8){
-    return ip6_to_numeric(ip_address);
   }
   return 0;
 }

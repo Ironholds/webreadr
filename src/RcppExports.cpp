@@ -40,3 +40,14 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// ip_to_numeric_
+std::vector < unsigned long > ip_to_numeric_(std::list < std::vector < std::string > > ip_addresses);
+RcppExport SEXP webtools_ip_to_numeric_(SEXP ip_addressesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< std::list < std::vector < std::string > > >::type ip_addresses(ip_addressesSEXP);
+    __result = Rcpp::wrap(ip_to_numeric_(ip_addresses));
+    return __result;
+END_RCPP
+}

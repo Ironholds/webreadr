@@ -46,3 +46,7 @@ decode_url <- function(urls) {
     .Call('webtools_decode_url', PACKAGE = 'webtools', urls)
 }
 
+ip_to_numeric_ <- function(ip_addresses) {
+    .Call('webtools_ip_to_numeric_', PACKAGE = 'webtools', ip_addresses)
+}
+
