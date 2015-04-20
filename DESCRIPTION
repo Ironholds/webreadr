@@ -17,5 +17,6 @@ Suggests: testthat,
 LinkingTo: Rcpp
 Imports: 
   Rcpp,
-  readr
+  readr,
+  stringi
 VignetteBuilder: knitr
