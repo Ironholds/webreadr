@@ -10,9 +10,10 @@
 #'by an NA value instead.
 #'
 #'@importFrom stringi stri_extract_first
+#'@importFrom urltools url_decode
 #'@export
 parse_r_agent <- function(agents){
-  agents <- decode_url(agents)
+  agents <- urltools::url_decode(agents)
   results <- data.frame(r_version = stri_extract_first(agents, regex = "(?<=^R \\()\\d\\.\\d{1,2}\\.\\d"),
                         architecture = stri_extract_first(agents, regex = "(i386|x86_64|i686|i486)"),
                         platform = stri_extract_first(agents, regex = "(mingw32|linux|apple)"),

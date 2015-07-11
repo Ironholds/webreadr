@@ -19,12 +19,26 @@ for common access log formats.
 The most common historical log format is the [Combined Log Format](http://httpd.apache.org/docs/1.3/logs.html#combined); this is used as one of the default formats for [nginx](http://nginx.org/) and the [Varnish caching system](https://www.varnish-cache.org/docs/trunk/reference/varnishncsa.html). <code>webtools</code>
 lets you read it in trivially with <code>read\_combined</code>:
 
-```{r}
+
+```r
 library(webtools)
 #read in an example file that comes with the webtools package
 data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
 #And if we look at the format...
 str(data)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	12 obs. of  9 variables:
+##  $ ip_address       : chr  "127.0.0.1" "123.123.123.123" "123.123.123.123" "123.123.123.123" ...
+##  $ remote_user_ident: chr  NA NA NA NA ...
+##  $ local_user_ident : chr  "frank" NA NA NA ...
+##  $ timestamp        : POSIXct, format: "2000-10-10 20:55:36" "2000-04-26 04:23:48" ...
+##  $ request          : chr  "GET /apache_pb.gif HTTP/1.0" "GET /pics/wpaper.gif HTTP/1.0" "GET /asctortf/ HTTP/1.0" "GET /pics/5star2000.gif HTTP/1.0" ...
+##  $ status_code      : int  200 200 200 200 200 200 200 200 200 200 ...
+##  $ bytes_sent       : int  2326 6248 8130 4005 1031 4282 36 10801 11179 887 ...
+##  $ referer          : chr  "http://www.example.com/start.html" "http://www.jafsoft.com/asctortf/" "http://search.netscape.com/Computers/Data_Formats/Document/Text/RTF" "http://www.jafsoft.com/asctortf/" ...
+##  $ user_agent       : chr  "Mozilla/4.08 [en] (Win98; I ;Nav)" "Mozilla/4.05 (Macintosh; I; PPC)" "Mozilla/4.05 (Macintosh; I; PPC)" "Mozilla/4.05 (Macintosh; I; PPC)" ...
 ```
 
 As you can see, the types have been appropriately set, the date/times have been parsed, and sensible header names have been set.
@@ -41,9 +55,17 @@ Normally you'd split each field out into a list, and then curse and recombine th
 doing so didn't hit R's memory limit during the "unlist" stage, and it'd take an absolute age. Or, you could just split them
 up directly into a data frame using <code>split\_clf</code>:
 
-```{r}
+
+```r
 requests <- split_clf(data$request)
 str(requests)
+```
+
+```
+## 'data.frame':	12 obs. of  3 variables:
+##  $ method  : chr  "GET" "GET" "GET" "GET" ...
+##  $ asset   : chr  "/apache_pb.gif" "/pics/wpaper.gif" "/asctortf/" "/pics/5star2000.gif" ...
+##  $ protocol: chr  "HTTP/1.0" "HTTP/1.0" "HTTP/1.0" "HTTP/1.0" ...
 ```
 This is faster than manual splitting-and-data.frame-ing, easier on the end user, and less likely to end in unexpected segfaults with
 large datasets. A similar function, <code>split\_squid</code>, exists for the status_code field in files read in with

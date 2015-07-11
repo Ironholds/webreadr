@@ -1,4 +1,9 @@
-Version 0.2.0 [WIP]
+Version 0.3.0 [WIP]
+-------------------------------------------------------------------------
+*IP normalisation and conversion removed; use iptools
+*URL decoding removed; use urltools.
+
+Version 0.2.0
 -------------------------------------------------------------------------
 *Add an AWS log file reader, read_aws, at Hadley's suggestion.
 *Convert log readers to use readr's read_log, eliminating some complexity and R-side parsing

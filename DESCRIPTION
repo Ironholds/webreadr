@@ -7,10 +7,7 @@ Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 Description: R is used by a vast array of people for a vast array of purposes - including web
   analytics. This package contains functions for consuming and munging various common forms of
-  request log, including the Common and Combined Web Log formats, along with a URL decoder
-  and encoder, component extractors, and IP/X-Forwarded-For normalisers to enable further
-  analysis such as geolocation.
-Depends: R (>= 3.1.0)
+  request log, including the Common and Combined Web Log formats.
 License: MIT + file LICENSE
 Suggests: testthat,
     knitr
@@ -18,5 +15,8 @@ LinkingTo: Rcpp
 Imports: 
   Rcpp,
   readr,
-  stringi
+  stringi,
+  urltools
+Suggests:
+  iptools
 VignetteBuilder: knitr
