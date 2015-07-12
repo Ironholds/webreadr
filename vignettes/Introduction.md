@@ -55,7 +55,6 @@ Normally you'd split each field out into a list, and then curse and recombine th
 doing so didn't hit R's memory limit during the "unlist" stage, and it'd take an absolute age. Or, you could just split them
 up directly into a data frame using <code>split\_clf</code>:
 
-
 ```r
 requests <- split_clf(data$request)
 str(requests)
