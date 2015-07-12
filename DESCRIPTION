@@ -14,9 +14,7 @@ Suggests: testthat,
 LinkingTo: Rcpp
 Imports: 
   Rcpp,
-  readr,
-  stringi,
-  urltools
+  readr
 Suggests:
   iptools
 VignetteBuilder: knitr

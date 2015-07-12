@@ -2,6 +2,7 @@ Version 0.3.0 [WIP]
 -------------------------------------------------------------------------
 *IP normalisation and conversion removed; use iptools
 *URL decoding removed; use urltools.
+*R user agent parsing removed; use uaparser
 
 Version 0.2.0
 -------------------------------------------------------------------------
