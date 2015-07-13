@@ -6,6 +6,9 @@
 \usage{
 read_aws(file)
 }
+\arguments{
+\item{file}{the full path to the AWS file you want to read.}
+}
 \description{
 Amazon CloudFront uses access logs with a standard format described
 \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{

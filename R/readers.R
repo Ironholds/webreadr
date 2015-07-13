@@ -164,6 +164,8 @@ read_squid <- function(file, has_header = FALSE){
 #'it is capable of organically detecting whether files lack common fields, and compensating for that. See
 #'"Details"
 #'
+#'@param file the full path to the AWS file you want to read.
+#'
 #'@details
 #'Amazon CloudFront uses tab-separated files with 
 #'\href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{
