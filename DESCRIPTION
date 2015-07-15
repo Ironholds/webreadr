@@ -1,4 +1,4 @@
-Package: webtools
+Package: webreadr
 Type: Package
 Title: Tools for Reading Formatted Access Log Files
 Version: 0.3.0

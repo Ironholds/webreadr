@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 internal_split <- function(requests, names) {
-    .Call('webtools_internal_split', PACKAGE = 'webtools', requests, names)
+    .Call('webreadr_internal_split', PACKAGE = 'webreadr', requests, names)
 }
 

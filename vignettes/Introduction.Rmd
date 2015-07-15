@@ -1,17 +1,23 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{webtools}
--->
+---
+title: "Introduction to webreadr"
+author: "Oliver Keyes"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to webreadr}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
 
-#Access log handling with webtools
+# Reading web access logs
 R, as a language, is used for analysing pretty much everything from genomic data to financial information. It's also
 used to analyse website access logs, and R lacks a good framework for doing that; the URL decoder isn't vectorised,
 the file readers don't have convenient defaults, and good luck normalising IP addresses at scale.
 
-Enter <code>webtools</code>, which contains convenient wrappers and functions for reading, munging and formatting
+Enter <code>webreadr</code>, which contains convenient wrappers and functions for reading, munging and formatting
 data from access logs and other sources of web request data.
 
-### File reading
+## File reading
 Base R has read.delim, which is convenient but much slower for file reading than Hadley's new [readr](https://github.com/hadley/readr)
 package. <code>webtools</code> defines a set of wrapper functions around readr's <code>read_delim</code>, designed
 for common access log formats.
@@ -31,7 +37,7 @@ As you can see, the types have been appropriately set, the date/times have been 
 The same thing can be done with the Common Log Format, used by Apache default configurations and as one of the defaults for
 Squid caching servers, using <code>read\_clf</code>. The other squid default format can be read with <code>read\_squid</code>.
 
-### Splitting combined fields
+## Splitting combined fields
 
 One of the things you'll notice about the example above is the "request" field - it contains not only the actual asset
 requested, but also the HTTP method used and the protocol used. That's pretty inconvenient for people looking to do something

@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // internal_split
 List internal_split(std::list < std::vector < std::string > > requests, std::vector < std::string > names);
-RcppExport SEXP webtools_internal_split(SEXP requestsSEXP, SEXP namesSEXP) {
+RcppExport SEXP webreadr_internal_split(SEXP requestsSEXP, SEXP namesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;

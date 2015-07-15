@@ -1,14 +1,14 @@
 <!--
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{webtools}
+%\VignetteIndexEntry{webreadr}
 -->
 
-#Access log handling with webtools
+# Reading web access logs
 R, as a language, is used for analysing pretty much everything from genomic data to financial information. It's also
 used to analyse website access logs, and R lacks a good framework for doing that; the URL decoder isn't vectorised,
 the file readers don't have convenient defaults, and good luck normalising IP addresses at scale.
 
-Enter <code>webtools</code>, which contains convenient wrappers and functions for reading, munging and formatting
+Enter <code>webreadr</code>, which contains convenient wrappers and functions for reading, munging and formatting
 data from access logs and other sources of web request data.
 
 ### File reading
@@ -22,6 +22,19 @@ lets you read it in trivially with <code>read\_combined</code>:
 
 ```r
 library(webtools)
+```
+
+```
+## 
+## Attaching package: 'webtools'
+## 
+## The following objects are masked from 'package:webreadr':
+## 
+##     read_aws, read_clf, read_combined, read_squid, split_clf,
+##     split_squid
+```
+
+```r
 #read in an example file that comes with the webtools package
 data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
 #And if we look at the format...
@@ -54,6 +67,7 @@ productive with the data.
 Normally you'd split each field out into a list, and then curse and recombine them into a data.frame and hope that
 doing so didn't hit R's memory limit during the "unlist" stage, and it'd take an absolute age. Or, you could just split them
 up directly into a data frame using <code>split\_clf</code>:
+
 
 ```r
 requests <- split_clf(data$request)
