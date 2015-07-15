@@ -1,4 +1,4 @@
 library(testthat)
-library(webtools)
+library(webreadr)
 
-test_check("webtools")
+test_check("webreadr")

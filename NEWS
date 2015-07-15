@@ -1,4 +1,4 @@
-Version 0.3.0 [WIP]
+Version 0.3.0
 -------------------------------------------------------------------------
 *IP normalisation and conversion removed; use iptools
 *URL decoding removed; use urltools.
