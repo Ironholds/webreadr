@@ -1,7 +1,7 @@
 context("Test file readers and splitters")
 
 test_that("Common Log Format files can be read, and split_clf can split the requests",{
-  data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
+  data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
   expect_equal(ncol(data), 7)
   expect_equal(nrow(data), 2)
   expect_equal(class(data$timestamp), c("POSIXct","POSIXt"))
@@ -11,7 +11,7 @@ test_that("Common Log Format files can be read, and split_clf can split the requ
 })
 
 test_that("Combined Log Format files can be read, and split_clf can split the requests",{
-  data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+  data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
   expect_equal(ncol(data), 9)
   expect_equal(nrow(data), 12)
   expect_equal(class(data$timestamp), c("POSIXct","POSIXt"))
@@ -22,7 +22,7 @@ test_that("Combined Log Format files can be read, and split_clf can split the re
 })
 
 test_that("Combined Log Format files can be read",{
-  data <- read_squid(system.file("extdata/log.squid", package = "webtools"))
+  data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
   expect_equal(ncol(data), 9)
   expect_equal(nrow(data), 121)
   expect_equal(class(data$timestamp), c("POSIXlt","POSIXt"))
@@ -32,7 +32,7 @@ test_that("Combined Log Format files can be read",{
 })
 
 test_that("AWS files can be read",{
-  data <- read_aws(system.file("extdata/log.aws", package = "webtools"))
+  data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
   expect_equal(ncol(data), 18)
   expect_equal(nrow(data), 2)
   expect_equal(class(data$date), c("POSIXlt","POSIXt"))

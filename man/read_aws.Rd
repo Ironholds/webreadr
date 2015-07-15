@@ -59,7 +59,7 @@ If no fields are missing, the fields returned will be:
 }
 \examples{
 #Read in an example CloudFront file provided with the webtools package.
-data <- read_aws(system.file("extdata/log.aws", package = "webtools"))
+data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 }
 \seealso{
 \code{\link{read_clf}} for the Common Log Format, \code{\link{read_squid}} and

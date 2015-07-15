@@ -66,16 +66,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2>File reading</h2>
 <p>Base R has read.delim, which is convenient but much slower for file reading than Hadley’s new <a href="https://github.com/hadley/readr">readr</a> package. <code>webtools</code> defines a set of wrapper functions around readr’s <code>read_delim</code>, designed for common access log formats.</p>
 <p>The most common historical log format is the <a href="http://httpd.apache.org/docs/1.3/logs.html#combined">Combined Log Format</a>; this is used as one of the default formats for <a href="http://nginx.org/">nginx</a> and the <a href="https://www.varnish-cache.org/docs/trunk/reference/varnishncsa.html">Varnish caching system</a>. <code>webtools</code> lets you read it in trivially with <code>read_combined</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(webtools)</code></pre>
-<pre><code>## 
-## Attaching package: 'webtools'
-## 
-## The following objects are masked from 'package:webreadr':
-## 
-##     read_aws, read_clf, read_combined, read_squid, split_clf,
-##     split_squid</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read in an example file that comes with the webtools package</span>
-data &lt;-<span class="st"> </span><span class="kw">read_combined</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata/combined_log.clf&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;webtools&quot;</span>))
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(webreadr)
+<span class="co">#read in an example file that comes with the webtools package</span>
+data &lt;-<span class="st"> </span><span class="kw">read_combined</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata/combined_log.clf&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;webreadr&quot;</span>))
 <span class="co">#And if we look at the format...</span>
 <span class="kw">str</span>(data)</code></pre>
 <pre><code>## Classes 'tbl_df', 'tbl' and 'data.frame':    12 obs. of  9 variables:

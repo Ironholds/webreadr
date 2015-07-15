@@ -35,7 +35,7 @@
 #'\code{\link{split_clf}} for splitting out the "requests" field.
 #'@examples
 #'#Read in an example CLF-formatted file provided with the webtools package.
-#'data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
+#'data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
 #'@export
 read_clf <- function(file, has_header = FALSE){
   names <- c("ip_address", "remote_user_ident", "local_user_ident", "timestamp"
@@ -78,7 +78,7 @@ read_clf <- function(file, has_header = FALSE){
 #'
 #'@examples
 #'#Read in an example Combined-formatted file provided with the webtools package.
-#'data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+#'data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 #'@export
 read_combined <- function(file, has_header = FALSE){
   names <- c("ip_address", "remote_user_ident", "local_user_ident", "timestamp",
@@ -138,7 +138,7 @@ read_combined <- function(file, has_header = FALSE){
 #'
 #'@examples
 #'#Read in an example Squid file provided with the webtools package.
-#'data <- read_squid(system.file("extdata/log.squid", package = "webtools"))
+#'data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 #'@export
 read_squid <- function(file, has_header = FALSE){
   names <- c("timestamp", "time_elapsed", "ip_address", "status_code",
@@ -212,7 +212,7 @@ read_squid <- function(file, has_header = FALSE){
 #'
 #'@examples
 #'#Read in an example CloudFront file provided with the webtools package.
-#'data <- read_aws(system.file("extdata/log.aws", package = "webtools"))
+#'data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 #'@export
 read_aws <- function(file){
   header_fields <- unlist(strsplit(read_lines(file, n_max = 2)[2], " "))[-1]

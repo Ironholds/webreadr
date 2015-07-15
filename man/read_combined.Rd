@@ -31,7 +31,7 @@ other things) the default logging format for \href{http://nginx.org/}{nginx} ser
 }
 \examples{
 #Read in an example Combined-formatted file provided with the webtools package.
-data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 }
 \seealso{
 \code{\link{read_clf}} for the /Common/ Log Format, and

@@ -26,9 +26,9 @@ The most common historical log format is the [Combined Log Format](http://httpd.
 lets you read it in trivially with <code>read\_combined</code>:
 
 ```{r}
-library(webtools)
+library(webreadr)
 #read in an example file that comes with the webtools package
-data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 #And if we look at the format...
 str(data)
 ```

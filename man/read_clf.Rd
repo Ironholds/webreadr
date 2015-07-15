@@ -44,7 +44,7 @@ the squid "native" format, can be read with \code{\link{read_squid}}).
 }
 \examples{
 #Read in an example CLF-formatted file provided with the webtools package.
-data <- read_clf(system.file("extdata/log.clf", package = "webtools"))
+data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
 }
 \seealso{
 \code{\link{read_combined}} for the /Combined/ Log Format, and
