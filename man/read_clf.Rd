@@ -43,7 +43,7 @@ system, for example, uses the CLF as one of its default log formats (the other,
 the squid "native" format, can be read with \code{\link{read_squid}}).
 }
 \examples{
-#Read in an example CLF-formatted file provided with the webtools package.
+#Read in an example CLF-formatted file provided with the webreadr package.
 data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
 }
 \seealso{

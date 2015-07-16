@@ -58,7 +58,7 @@ If no fields are missing, the fields returned will be:
 }
 }
 \examples{
-#Read in an example CloudFront file provided with the webtools package.
+#Read in an example CloudFront file provided with the webreadr package.
 data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 }
 \seealso{

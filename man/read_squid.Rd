@@ -43,7 +43,7 @@ by this function. It consists of the fields:
 }
 }
 \examples{
-#Read in an example Squid file provided with the webtools package.
+#Read in an example Squid file provided with the webreadr package.
 data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 }
 \seealso{

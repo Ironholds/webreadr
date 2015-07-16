@@ -25,7 +25,7 @@ these into a data.frame of two distinct columns.
 }
 \examples{
 #Read in an example Squid file provided with the webtools package, then split out the codes
-data <- read_squid(system.file("extdata/log.squid", package = "webtools"))
+data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 status_splot <- split_squid(data$status_code)
 }
 \seealso{

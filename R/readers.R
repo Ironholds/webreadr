@@ -34,7 +34,7 @@
 #'@seealso \code{\link{read_combined}} for the /Combined/ Log Format, and
 #'\code{\link{split_clf}} for splitting out the "requests" field.
 #'@examples
-#'#Read in an example CLF-formatted file provided with the webtools package.
+#'#Read in an example CLF-formatted file provided with the webreadr package.
 #'data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
 #'@export
 read_clf <- function(file, has_header = FALSE){
@@ -77,7 +77,7 @@ read_clf <- function(file, has_header = FALSE){
 #'\code{\link{split_clf}} for splitting out the "requests" field.
 #'
 #'@examples
-#'#Read in an example Combined-formatted file provided with the webtools package.
+#'#Read in an example Combined-formatted file provided with the webreadr package.
 #'data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 #'@export
 read_combined <- function(file, has_header = FALSE){
@@ -137,7 +137,7 @@ read_combined <- function(file, has_header = FALSE){
 #'\code{\link{split_squid}} for splitting the "status_code" field into its component parts.
 #'
 #'@examples
-#'#Read in an example Squid file provided with the webtools package.
+#'#Read in an example Squid file provided with the webreadr package.
 #'data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 #'@export
 read_squid <- function(file, has_header = FALSE){
@@ -211,7 +211,7 @@ read_squid <- function(file, has_header = FALSE){
 #'\code{\link{read_combined}}.
 #'
 #'@examples
-#'#Read in an example CloudFront file provided with the webtools package.
+#'#Read in an example CloudFront file provided with the webreadr package.
 #'data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 #'@export
 read_aws <- function(file){

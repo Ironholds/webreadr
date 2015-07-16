@@ -18,7 +18,7 @@
 #'
 #'@examples
 #'#Grab CLF data and split out the request.
-#'data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+#'data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 #'requests <- split_clf(data$request)
 #'@export
 split_clf <- function(requests){
@@ -47,7 +47,7 @@ split_clf <- function(requests){
 #'
 #'@examples
 #'#Read in an example Squid file provided with the webtools package, then split out the codes
-#'data <- read_squid(system.file("extdata/log.squid", package = "webtools"))
+#'data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 #'status_splot <- split_squid(data$status_code)
 #'
 #'@export

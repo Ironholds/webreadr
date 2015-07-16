@@ -25,7 +25,7 @@ and returns a data.frame containing these elements in distinct columns.
 }
 \examples{
 #Grab CLF data and split out the request.
-data <- read_combined(system.file("extdata/combined_log.clf", package = "webtools"))
+data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 requests <- split_clf(data$request)
 }
 \seealso{
