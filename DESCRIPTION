@@ -9,6 +9,8 @@ Description: R is used by a vast array of people for a vast array of purposes - 
   analytics. This package contains functions for consuming and munging various common forms of
   request log, including the Common and Combined Web Log formats and AWS logs.
 License: MIT + file LICENSE
+BugReports: https://github.com/Ironholds/webreadr/issues
+URL: https://github.com/Ironholds/webreadr
 Suggests: testthat,
     knitr
 LinkingTo: Rcpp
