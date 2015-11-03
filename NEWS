@@ -1,3 +1,7 @@
+Version 0.3.1
+-------------------------------------------------------------------------
+*Internal tweaks matching the updated readr package.
+
 Version 0.3.0
 -------------------------------------------------------------------------
 *IP normalisation and conversion removed; use iptools

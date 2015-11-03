@@ -143,7 +143,7 @@ read_combined <- function(file, has_header = FALSE){
 read_squid <- function(file, has_header = FALSE){
   names <- c("timestamp", "time_elapsed", "ip_address", "status_code",
              "bytes_sent","http_method", "url","remote_user_ident","peer_info")
-  col_types <- list(col_numeric(),
+  col_types <- list(col_number(),
                     col_integer(),
                     col_character(),
                     col_character(),
