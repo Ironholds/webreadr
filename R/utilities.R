@@ -30,3 +30,7 @@ aws_header_select <- function(header_fields){
   }
   return(list(out_names, out_collectors))
 }
+
+unix_to_posix <- function(ts){
+  return(as.POSIXct(ts, origin = '1970-01-01', tz = "UTC"))
+}

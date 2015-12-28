@@ -1,0 +1,18 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	dns
+#open	2014-04-03-09-52-29
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	trans_id	query	qclass	qclass_name	qtype	qtype_name	rcode	rcode_name	AA	TC	RD	RA	Z	answers	TTLs	rejected
+#types	time	string	addr	port	addr	port	enum	count	string	count	string	count	string	count	string	bool	bool	bool	bool	count	vector[string]	vector[interval]	bool
+1357899314.010877	CpxOUn3sK7TSPlNf38	192.168.27.10	1029	4.2.2.3	53	udp	47762	alyanaa.fr	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	213.186.33.19	86400.000000	F
+1357899314.487911	CpxOUn3sK7TSPlNf38	192.168.27.10	1029	4.2.2.3	53	udp	27026	tomurcukozel.com	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	85.17.137.82	14400.000000	F
+1357899315.596098	CpxOUn3sK7TSPlNf38	192.168.27.10	1029	4.2.2.3	53	udp	19603	godema.es	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	82.98.144.32	300.000000	F
+1357899321.932438	CpxOUn3sK7TSPlNf38	192.168.27.10	1029	4.2.2.3	53	udp	37520	32.144.98.82.in-addr.arpa	1	C_INTERNET	12	PTR	0	NOERROR	F	F	T	T	0	hl91.dinaserver.com	300.000000	F
+1357899322.142216	CpxOUn3sK7TSPlNf38	192.168.27.10	1029	4.2.2.3	53	udp	15505	hl91.dinaserver.com	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	82.98.144.32	300.000000	F
+1357899337.317695	Ckzayz3izbt79L0qE2	192.168.27.10	1029	4.2.2.3	53	udp	59287	craportuense.com	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	94.127.190.21	86400.000000	F
+1357899352.489441	CyGm8r4Ebfy1NcHW02	192.168.27.10	1029	4.2.2.3	53	udp	59540	testdnk.com.ua	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	91.196.0.15	14400.000000	F
+1357899352.771995	CyGm8r4Ebfy1NcHW02	192.168.27.10	1029	4.2.2.3	53	udp	47508	xgpco.fsafhsahrre.tk	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	5.104.106.56	60.000000	F
+1357899360.658966	CLYJhc4Hql4ePf8r	192.168.27.10	1047	4.2.2.3	53	udp	24453	11v4n49.cdn144.filesetcbesthosting.com	1	C_INTERNET	1	A	0	NOERROR	F	F	T	T	0	78.131.140.158	3600.000000	F
+#close	2014-04-03-09-52-29

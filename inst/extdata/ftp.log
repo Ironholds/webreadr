@@ -1,0 +1,26 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	ftp
+#open	2014-04-03-10-09-36
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	user	password	command	arg	mime_type	file_size	reply_code	reply_msg	data_channel.passive	data_channel.orig_h	data_channel.resp_h	data_channel.resp_p	fuid
+#types	time	string	addr	port	addr	port	string	string	string	string	string	count	count	string	bool	addr	addr	port	string
+1319319973.955640	CFsubj30NQyczGWAgf	192.168.110.10	1044	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	ALL	-	-	200	EPSV ALL command successful	-	-	-	-	-
+1319319974.213259	CFsubj30NQyczGWAgf	192.168.110.10	1044	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	-	-	-	229	Entering Extended Passive Mode (|||35102|)	T	192.168.110.10	93.187.142.14	35102	-
+1319319976.030325	CFsubj30NQyczGWAgf	192.168.110.10	1044	93.187.142.14	21	anonymous	Java1.6.0_10@	RETR	ftp://93.187.142.14/./Main.class	application/x-java-applet	5668	226	Transfer complete	-	-	-	-	Fq01Rm44KrYAIwQbmg
+1319319976.824299	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	ALL	-	-	200	EPSV ALL command successful	-	-	-	-	-
+1319319977.087579	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	-	-	-	229	Entering Extended Passive Mode (|||35855|)	T	192.168.110.10	93.187.142.14	35855	-
+1319319998.868477	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPRT	|1|192.168.110.10|1057|	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1057	-
+1319319999.130065	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	PORT	192,168,110,10,4,33	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1057	-
+1319320000.152441	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	ALL	-	-	200	EPSV ALL command successful	-	-	-	-	-
+1319320002.684848	CLmANC3uSW8QhU6jxg	192.168.110.10	1053	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	ALL	-	-	200	EPSV ALL command successful	-	-	-	-	-
+1319320020.799858	ChntCo16QN7jsVvBvg	192.168.110.10	1064	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	ALL	-	-	200	EPSV ALL command successful	-	-	-	-	-
+1319320000.412112	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	-	-	-	229	Entering Extended Passive Mode (|||35612|)	T	192.168.110.10	93.187.142.14	35612	-
+1319320021.947413	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	EPRT	|1|192.168.110.10|1069|	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1069	-
+1319320002.963547	CLmANC3uSW8QhU6jxg	192.168.110.10	1053	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	-	-	-	229	Entering Extended Passive Mode (|||35378|)	T	192.168.110.10	93.187.142.14	35378	-
+1319320024.628193	CLmANC3uSW8QhU6jxg	192.168.110.10	1053	93.187.142.14	21	anonymous	Java1.6.0_10@	EPRT	|1|192.168.110.10|1071|	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1071	-
+1319320021.059526	ChntCo16QN7jsVvBvg	192.168.110.10	1064	93.187.142.14	21	anonymous	Java1.6.0_10@	EPSV	-	-	-	229	Entering Extended Passive Mode (|||35473|)	T	192.168.110.10	93.187.142.14	35473	-
+1319320022.219310	CRDiEh1Yqt2meoFKMk	192.168.110.10	1047	93.187.142.14	21	anonymous	Java1.6.0_10@	PORT	192,168,110,10,4,45	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1069	-
+1319320024.893111	CLmANC3uSW8QhU6jxg	192.168.110.10	1053	93.187.142.14	21	anonymous	Java1.6.0_10@	PORT	192,168,110,10,4,47	-	-	500	Illegal PORT command, EPSV ALL in effect	F	93.187.142.14	192.168.110.10	1071	-
+#close	2014-04-03-10-09-38
