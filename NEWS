@@ -1,3 +1,10 @@
+Version 0.4.0 [WIP]
+-------------------------------------------------------------------------
+
+NEW FEATURES
+* Amazon S3 bucket access logs are now supported with read_s3(). Thanks to
+Hadley Wickham for the feature request.
+
 Version 0.3.1
 -------------------------------------------------------------------------
 *Internal tweaks matching the updated readr package.

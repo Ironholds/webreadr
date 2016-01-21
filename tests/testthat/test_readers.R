@@ -37,3 +37,12 @@ test_that("AWS files can be read",{
   expect_equal(nrow(data), 2)
   expect_equal(class(data$date), c("POSIXlt","POSIXt"))
 })
+
+
+
+test_that("S3 files can be read",{
+  data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
+  expect_equal(ncol(data), 18)
+  expect_equal(nrow(data), 6)
+  expect_equal(class(data$request_time), c("POSIXlt","POSIXt"))
+})

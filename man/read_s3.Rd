@@ -13,6 +13,42 @@ read_s3(file)
 \code{read_s3} provides a reader for Amazon's S3 service's access logs, described
 \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html}{here}.
 }
+\details{
+S3 access logs contain information about requests to S3 buckets, and follow
+a standard format described
+\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html}{here}.
+
+The fields for S3 files are:
+
+\itemize{
+ \item{owner:} {the owner of the S3 bucket; a hashed user ID}
+ \item{bucket:} {the bucket that processed the request.}
+ \item{request_time:} {the time that a request was received. Formatted as POSIXlt
+ timestamps.}
+ \item{remote_ip:} {the IP address that made the request.}
+ \item{requester:} {the user ID of the person making the request; \code{Anonymous}
+ if the request was not authenticated.}
+ \item{operation:} {the actual operation performed with the request.}
+ \item{key:} {the request's key, normally an encoded URL fragment or NA if
+ the operation did not contain a key.}
+ \item{uri:} {the full URI for the request, as well as the HTTP method and
+ version.}
+ \item{status:} {the HTTP status code associated with the request.}
+ \item{error:} {the error code, if an error occurred; NA otherwise. See
+ \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorCode.html}{here} for
+ more information about S3 error codes.}
+ \item{sent:} {the number of bytes returned in response to the request.}
+ \item{size:} {the total size of the returned object.}
+ \item{time:} {the number of milliseconds between the request being sent and
+ the response being sent, from the server's perspective.}
+ \item{turn_around:} {the number of milliseconds the S3 bucket spent processing
+ the request.}
+ \item{referer:} {the referer associated with the request.}
+ \item{user_agent:} {the user agent associated with the request.}
+ \item{version_id:} {the version ID of the request; NA if the requested operation
+ does not involve a version ID.}
+}
+}
 \examples{
 # Using the inbuilt testing dataset
 s3_data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
