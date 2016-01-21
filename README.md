@@ -21,7 +21,7 @@ For the released version:
 For the development version:
 
     library(devtools)
-    install_github("ironholds/webtools")
+    install_github("ironholds/webreadr")
 
 ### Dependencies
 * R >= 3.1.0.
