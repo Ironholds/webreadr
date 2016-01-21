@@ -207,7 +207,8 @@ read_squid <- function(file, has_header = FALSE){
 #'  the time the server completed responding to it.}
 #'}
 #'
-#'@seealso \code{\link{read_clf}} for the Common Log Format, \code{\link{read_squid}} and
+#'@seealso \code{\link{read_s3}}, for Amazon S3 files,
+#'\code{\link{read_clf}} for the Common Log Format, \code{\link{read_squid}} and
 #'\code{\link{read_combined}}.
 #'
 #'@examples
@@ -223,5 +224,27 @@ read_aws <- function(file){
     data$date <- as.POSIXlt(paste(data$date, data$time), tz = "UTC")
     return(data[,!names(data) == "time"])
   }
+  return(data)
+}
+
+#'@title Read Amazon S3 Access Logs
+#'@description \code{read_s3} provides a reader for Amazon's S3 service's access logs, described
+#'\href{http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html}{here}.
+#'
+#'@param file the full path to the S3 file you want to read.
+#'
+#'@seealso \code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files.
+#'
+#'@examples
+#'# Using the inbuilt testing dataset
+#'s3_data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
+#'
+read_s3 <- function(file){
+  names <- c("owner", "bucket", "request_time", "remote_ip", "requester", "request_id", "operation",
+             "key", "uri", "status", "error", "sent", "size", "time", "turn_around", "referrer",
+             "user_agent", "version_id")
+  types <- "cccccccccicnniiccc"
+  data <- readr::read_log(file = file, col_types = types, col_names = names)
+  data$request_time <- strptime(data$request_time, format = "%d/%b/%Y:%H:%M:%S %z")
   return(data)
 }

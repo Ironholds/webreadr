@@ -62,6 +62,7 @@ If no fields are missing, the fields returned will be:
 data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 }
 \seealso{
+\code{\link{read_s3}}, for Amazon S3 files,
 \code{\link{read_clf}} for the Common Log Format, \code{\link{read_squid}} and
 \code{\link{read_combined}}.
 }

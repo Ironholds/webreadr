@@ -3,6 +3,7 @@
 export(read_aws)
 export(read_clf)
 export(read_combined)
+export(read_s3)
 export(read_squid)
 export(split_clf)
 export(split_squid)
