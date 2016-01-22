@@ -153,7 +153,7 @@ read_squid <- function(file, has_header = FALSE){
                     col_character(),
                     col_character())
   data <- read_log(file = file, col_names = names, col_types = col_types, skip = ifelse(has_header, 1, 0))
-  data$timestamp <- as.POSIXlt(data$timestamp, origin = "1970-01-01", tz = "UTC")
+  data$timestamp <- as.POSIXct(data$timestamp, origin = "1970-01-01", tz = "UTC")
   return(data)
 }
 
@@ -221,7 +221,7 @@ read_aws <- function(file){
   data <- read_delim(file = file, delim = "\t", escape_backslash = FALSE, col_names = formatters[[1]],
                      col_types = formatters[[2]], skip = 2)
   if(all(c("date","time") %in% names(data))){
-    data$date <- as.POSIXlt(paste(data$date, data$time), tz = "UTC")
+    data$date <- as.POSIXct(paste(data$date, data$time), tz = "UTC")
     return(data[,!names(data) == "time"])
   }
   return(data)
@@ -242,7 +242,7 @@ read_aws <- function(file){
 #'\itemize{
 #'  \item{owner:} {the owner of the S3 bucket; a hashed user ID}
 #'  \item{bucket:} {the bucket that processed the request.}
-#'  \item{request_time:} {the time that a request was received. Formatted as POSIXlt
+#'  \item{request_time:} {the time that a request was received. Formatted as POSIXct
 #'  timestamps.}
 #'  \item{remote_ip:} {the IP address that made the request.}
 #'  \item{requester:} {the user ID of the person making the request; \code{Anonymous}
@@ -281,6 +281,6 @@ read_s3 <- function(file){
              "user_agent", "version_id")
   types <- "cccccccccicnniiccc"
   data <- readr::read_log(file = file, col_types = types, col_names = names)
-  data$request_time <- strptime(data$request_time, format = "%d/%b/%Y:%H:%M:%S %z")
+  data$request_time <- readr::parse_datetime(data$request_time, format = "%d/%b/%Y:%H:%M:%S %z")
   return(data)
 }

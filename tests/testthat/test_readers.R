@@ -25,7 +25,7 @@ test_that("Combined Log Format files can be read",{
   data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
   expect_equal(ncol(data), 9)
   expect_equal(nrow(data), 121)
-  expect_equal(class(data$timestamp), c("POSIXlt","POSIXt"))
+  expect_equal(class(data$timestamp), c("POSIXct","POSIXt"))
   split_data <- split_squid(data$status_code)
   expect_equal(ncol(split_data), 2)
   expect_equal(nrow(split_data), 121)
@@ -35,7 +35,7 @@ test_that("AWS files can be read",{
   data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
   expect_equal(ncol(data), 18)
   expect_equal(nrow(data), 2)
-  expect_equal(class(data$date), c("POSIXlt","POSIXt"))
+  expect_equal(class(data$date), c("POSIXct","POSIXt"))
 })
 
 
@@ -44,5 +44,5 @@ test_that("S3 files can be read",{
   data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
   expect_equal(ncol(data), 18)
   expect_equal(nrow(data), 6)
-  expect_equal(class(data$request_time), c("POSIXlt","POSIXt"))
+  expect_equal(class(data$request_time), c("POSIXct","POSIXt"))
 })
