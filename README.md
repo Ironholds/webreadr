@@ -5,6 +5,8 @@ __Author:__ Oliver Keyes<br/>
 __License:__ [MIT](http://opensource.org/licenses/MIT)<br/>
 __Status:__ Stable
 
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/WikidataR)
+
 <code>webreadr</code> provides utilities for reading access log data in R. It is capable of handling logs in
 Squid, Apache, Varnish, NGINX or AWS's usual formats, and is based around Hadley Wickham's `readr` package for
 maximum speed. See the [vignette](https://github.com/Ironholds/webtools/blob/master/vignettes/Introduction.Rmd)
