@@ -12,7 +12,7 @@ Squid, Apache, Varnish, NGINX or AWS's usual formats, and is based around Hadley
 maximum speed. See the [vignette](https://github.com/Ironholds/webtools/blob/master/vignettes/Introduction.Rmd)
 for more information, and if you have requests for additional features, open an [issue](https://github.com/Ironholds/webtools/issues).
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/Ironholds/webreadr/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ### Installation
 
