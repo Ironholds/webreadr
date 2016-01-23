@@ -8,6 +8,9 @@ for the feature request.
 BUG FIXES
 * For consistency purposes, date-times will be POSIXct rather than occasionally POSIXlt
 
+DEVELOPMENT
+* Splitters are now approximately 40-60% faster and can better handle corrupted or strange fields.
+
 Version 0.3.1
 -------------------------------------------------------------------------
 *Internal tweaks matching the updated readr package.

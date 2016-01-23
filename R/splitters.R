@@ -47,10 +47,9 @@ split_clf <- function(requests){
 #'@examples
 #'#Read in an example Squid file provided with the webtools package, then split out the codes
 #'data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
-#'status_splot <- split_squid(data$status_code)
+#'statuses <- split_squid(data$status_code)
 #'
 #'@export
 split_squid <- function(status_codes){
-  internal_split(requests = strsplit(x = status_codes, split = "/", fixed = TRUE),
-                 names = c("squid_code", "http_status"))
+  internal_split_squid(status_codes)
 }

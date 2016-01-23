@@ -16,15 +16,14 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// internal_split
-List internal_split(std::list < std::vector < std::string > > requests, std::vector < std::string > names);
-RcppExport SEXP webreadr_internal_split(SEXP requestsSEXP, SEXP namesSEXP) {
+// internal_split_squid
+DataFrame internal_split_squid(CharacterVector requests);
+RcppExport SEXP webreadr_internal_split_squid(SEXP requestsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< std::list < std::vector < std::string > > >::type requests(requestsSEXP);
-    Rcpp::traits::input_parameter< std::vector < std::string > >::type names(namesSEXP);
-    __result = Rcpp::wrap(internal_split(requests, names));
+    Rcpp::traits::input_parameter< CharacterVector >::type requests(requestsSEXP);
+    __result = Rcpp::wrap(internal_split_squid(requests));
     return __result;
 END_RCPP
 }

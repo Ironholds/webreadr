@@ -5,7 +5,7 @@ internal_split_clf <- function(requests) {
     .Call('webreadr_internal_split_clf', PACKAGE = 'webreadr', requests)
 }
 
-internal_split <- function(requests, names) {
-    .Call('webreadr_internal_split', PACKAGE = 'webreadr', requests, names)
+internal_split_squid <- function(requests) {
+    .Call('webreadr_internal_split_squid', PACKAGE = 'webreadr', requests)
 }
 

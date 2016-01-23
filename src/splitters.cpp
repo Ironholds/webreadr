@@ -46,7 +46,7 @@ DataFrame internal_split_clf(CharacterVector requests){
   CharacterVector method(input_length);
   CharacterVector asset(input_length);
   CharacterVector protocol(input_length);
-  CharacterVector holding(3);
+  CharacterVector holding(expected_entries);
   
   for(unsigned int i = 0; i < input_length; i++){
     
@@ -67,34 +67,40 @@ DataFrame internal_split_clf(CharacterVector requests){
     }
   }
   
-  return DataFrame::create(_["method"] = method,
-                           _["asset"]  = asset,
-                           _["protocol"]  = protocol,
+  return DataFrame::create(_["method"]           = method,
+                           _["asset"]            = asset,
+                           _["protocol"]         = protocol,
                            _["stringsAsFactors"] = false);
 }
 
-// The internal C++ code for reconstructing a data.frame from a split request entry
-// [[Rcpp::export]]
-List internal_split(std::list < std::vector < std::string > > requests, std::vector < std::string > names){
-  int names_size = names.size();
-  int in_size = requests.size();
-  IntegerVector rownames = Rcpp::seq(1,in_size);
-  List output;
-   
-  for(int i = 0; i < names_size; i++){
-    std::list < std::vector < std::string > >::iterator iterator;
-    std::vector < std::string > holding;
-    for(iterator = requests.begin(); iterator != requests.end(); ++iterator){
-      if((*iterator).size() == names_size){
-        holding.push_back((*iterator)[i]);
-      } else {
-        holding.push_back("");
-      }
+//[[Rcpp::export]]
+DataFrame internal_split_squid(CharacterVector requests){
+  
+  // Prepare output objects
+  int expected_entries = 2;
+  int input_length = requests.length();
+  CharacterVector squid_code(input_length);
+  CharacterVector http_status(input_length);
+  CharacterVector holding(expected_entries);
+  
+  for(unsigned int i = 0; i < input_length; i++){
+    
+    // Handle the case where the input is an NA
+    if(requests[i] == NA_STRING){
+      
+      squid_code[i]   = NA_STRING;
+      http_status[i]  = NA_STRING;
+
+    } else {
+      
+      // Otherwise, split and copy across
+      holding = split_single(Rcpp::as<std::string>(requests[i]), expected_entries, "/");
+      squid_code[i]   = holding[0];
+      http_status[i]  = holding[1];
     }
-    output.push_back(holding);
   }
-  output.attr("class") = "data.frame";
-  output.attr("names") = names;
-  output.attr("row.names") = rownames;
-  return output;
+  
+  return DataFrame::create(_["squid_code"]       = squid_code,
+                           _["http_status"]      = http_status,
+                           _["stringsAsFactors"] = false);
 }
