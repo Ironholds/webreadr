@@ -1,20 +1,21 @@
 Package: webreadr
 Type: Package
 Title: Tools for Reading Formatted Access Log Files
-Version: 0.3.0
-Date: 2015-07-13
+Version: 0.4.0
+Date: 2016-01-23
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 Description: R is used by a vast array of people for a vast array of purposes
     - including web analytics. This package contains functions for consuming and
     munging various common forms of request log, including the Common and Combined
-    Web Log formats and AWS logs.
+    Web Log formats and various Amazon access logs.
 License: MIT + file LICENSE
 BugReports: https://github.com/Ironholds/webreadr/issues
 URL: https://github.com/Ironholds/webreadr
 Suggests:
     iptools,
     urltools,
+    rgeolocate,
     knitr,
     testthat
 LinkingTo: Rcpp
