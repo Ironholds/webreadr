@@ -21,12 +21,19 @@ In the future, this will be somewhat improved.
 \description{
 CLF (Combined/Common Log Format) files store the HTTP method, protocol
 and asset requested in the same field. \code{split_clf} takes this field as a vector
-and returns a data.frame containing these elements in distinct columns.
+and returns a data.frame containing these elements in distinct columns. The function
+also works nicely with the \code{uri} field from Amazon S3 files (see
+\code{\link{read_s3}}).
 }
 \examples{
-#Grab CLF data and split out the request.
+# Grab CLF data and split out the request.
 data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 requests <- split_clf(data$request)
+
+# An example using S3 files
+s3_data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
+s3_requests <- split_clf(s3_data$uri)
+
 }
 \seealso{
 \code{\link{read_clf}} and \code{\link{read_combined}} for reading

@@ -251,7 +251,8 @@ read_aws <- function(file){
 #'  \item{key:} {the request's key, normally an encoded URL fragment or NA if
 #'  the operation did not contain a key.}
 #'  \item{uri:} {the full URI for the request, as well as the HTTP method and
-#'  version.}
+#'  version. \code{\link{split_clf}} works to split this into a data.frame of 3
+#'  columns.}
 #'  \item{status:} {the HTTP status code associated with the request.}
 #'  \item{error:} {the error code, if an error occurred; NA otherwise. See
 #'  \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorCode.html}{here} for
@@ -268,7 +269,8 @@ read_aws <- function(file){
 #'  does not involve a version ID.}
 #'}
 #'
-#'@seealso \code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files.
+#'@seealso \code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files,
+#'and \code{\link{split_clf}}, which works well on the \code{uri} field from S3 files.
 #'
 #'@examples
 #'# Using the inbuilt testing dataset

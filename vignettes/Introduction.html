@@ -10,7 +10,7 @@
 
 <meta name="author" content="Oliver Keyes" />
 
-<meta name="date" content="2015-07-15" />
+<meta name="date" content="2016-01-23" />
 
 <title>Introduction to webreadr</title>
 
@@ -54,7 +54,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="header">
 <h1 class="title">Introduction to webreadr</h1>
 <h4 class="author"><em>Oliver Keyes</em></h4>
-<h4 class="date"><em>2015-07-15</em></h4>
+<h4 class="date"><em>2016-01-23</em></h4>
 </div>
 
 
@@ -82,6 +82,7 @@ data &lt;-<span class="st"> </span><span class="kw">read_combined</span>(<span c
 ##  $ referer          : chr  &quot;http://www.example.com/start.html&quot; &quot;http://www.jafsoft.com/asctortf/&quot; &quot;http://search.netscape.com/Computers/Data_Formats/Document/Text/RTF&quot; &quot;http://www.jafsoft.com/asctortf/&quot; ...
 ##  $ user_agent       : chr  &quot;Mozilla/4.08 [en] (Win98; I ;Nav)&quot; &quot;Mozilla/4.05 (Macintosh; I; PPC)&quot; &quot;Mozilla/4.05 (Macintosh; I; PPC)&quot; &quot;Mozilla/4.05 (Macintosh; I; PPC)&quot; ...</code></pre>
 <p>As you can see, the types have been appropriately set, the date/times have been parsed, and sensible header names have been set. The same thing can be done with the Common Log Format, used by Apache default configurations and as one of the defaults for Squid caching servers, using <code>read_clf</code>. The other squid default format can be read with <code>read_squid</code>.</p>
+<p>Amazon’s AWS files are also supported, with <code>read_aws</code>, which includes automatic field detection, and S3 bucket access logs can be read with <code>read_s3</code>.</p>
 </div>
 <div id="splitting-combined-fields" class="section level2">
 <h2>Splitting combined fields</h2>
@@ -93,7 +94,8 @@ data &lt;-<span class="st"> </span><span class="kw">read_combined</span>(<span c
 ##  $ method  : chr  &quot;GET&quot; &quot;GET&quot; &quot;GET&quot; &quot;GET&quot; ...
 ##  $ asset   : chr  &quot;/apache_pb.gif&quot; &quot;/pics/wpaper.gif&quot; &quot;/asctortf/&quot; &quot;/pics/5star2000.gif&quot; ...
 ##  $ protocol: chr  &quot;HTTP/1.0&quot; &quot;HTTP/1.0&quot; &quot;HTTP/1.0&quot; &quot;HTTP/1.0&quot; ...</code></pre>
-<p>This is faster than manual splitting-and-data.frame-ing, easier on the end user, and less likely to end in unexpected segfaults with large datasets. A similar function, <code>split_squid</code>, exists for the status_code field in files read in with <code>read_squid</code>, which suffer from a similar problem.</p>
+<p>This is faster than manual splitting-and-data.frame-ing, easier on the end user, and less likely to end in unexpected segfaults with large datasets. It also works on the <code>uri</code> within S3 access logs.</p>
+<p>A similar function, <code>split_squid</code>, exists for the <code>status\_code</code> field in files read in with <code>read_squid</code>, which suffer from a similar problem.</p>
 </div>
 <div id="other-ideas" class="section level2">
 <h2>Other ideas</h2>

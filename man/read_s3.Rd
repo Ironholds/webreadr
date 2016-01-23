@@ -23,7 +23,7 @@ The fields for S3 files are:
 \itemize{
  \item{owner:} {the owner of the S3 bucket; a hashed user ID}
  \item{bucket:} {the bucket that processed the request.}
- \item{request_time:} {the time that a request was received. Formatted as POSIXlt
+ \item{request_time:} {the time that a request was received. Formatted as POSIXct
  timestamps.}
  \item{remote_ip:} {the IP address that made the request.}
  \item{requester:} {the user ID of the person making the request; \code{Anonymous}
@@ -32,7 +32,8 @@ The fields for S3 files are:
  \item{key:} {the request's key, normally an encoded URL fragment or NA if
  the operation did not contain a key.}
  \item{uri:} {the full URI for the request, as well as the HTTP method and
- version.}
+ version. \code{\link{split_clf}} works to split this into a data.frame of 3
+ columns.}
  \item{status:} {the HTTP status code associated with the request.}
  \item{error:} {the error code, if an error occurred; NA otherwise. See
  \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorCode.html}{here} for
@@ -55,6 +56,7 @@ s3_data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
 
 }
 \seealso{
-\code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files.
+\code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files,
+and \code{\link{split_clf}}, which works well on the \code{uri} field from S3 files.
 }
 

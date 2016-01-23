@@ -37,6 +37,9 @@ As you can see, the types have been appropriately set, the date/times have been 
 The same thing can be done with the Common Log Format, used by Apache default configurations and as one of the defaults for
 Squid caching servers, using <code>read\_clf</code>. The other squid default format can be read with <code>read\_squid</code>.
 
+Amazon's AWS files are also supported, with <code>read\_aws</code>, which includes automatic field detection, and S3 bucket
+access logs can be read with <code>read\_s3</code>.
+
 ## Splitting combined fields
 
 One of the things you'll notice about the example above is the "request" field - it contains not only the actual asset
@@ -51,9 +54,11 @@ up directly into a data frame using <code>split\_clf</code>:
 requests <- split_clf(data$request)
 str(requests)
 ```
+
 This is faster than manual splitting-and-data.frame-ing, easier on the end user, and less likely to end in unexpected segfaults with
-large datasets. A similar function, <code>split\_squid</code>, exists for the status_code field in files read in with
-<code>read_squid</code>, which suffer from a similar problem.
+large datasets. It also works on the <code>uri</code> within S3 access logs.
+
+A similar function, <code>split\_squid</code>, exists for the `status\_code` field in files read in with <code>read_squid</code>, which suffer from a similar problem.
 
 ## Other ideas
 If you have ideas for other URL handlers that would make access log processing easier, the best approach
