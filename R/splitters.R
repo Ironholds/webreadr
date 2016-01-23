@@ -22,8 +22,7 @@
 #'requests <- split_clf(data$request)
 #'@export
 split_clf <- function(requests){
-  internal_split(requests = strsplit(x = requests, split = " ", fixed = TRUE),
-                 names = c("method", "asset", "protocol"))
+  internal_split_clf(requests)
 }
 
 #'@title split the "status_code" field in a Squid-formatted dataset.

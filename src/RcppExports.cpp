@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// internal_split_clf
+DataFrame internal_split_clf(CharacterVector requests);
+RcppExport SEXP webreadr_internal_split_clf(SEXP requestsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< CharacterVector >::type requests(requestsSEXP);
+    __result = Rcpp::wrap(internal_split_clf(requests));
+    return __result;
+END_RCPP
+}
 // internal_split
 List internal_split(std::list < std::vector < std::string > > requests, std::vector < std::string > names);
 RcppExport SEXP webreadr_internal_split(SEXP requestsSEXP, SEXP namesSEXP) {
