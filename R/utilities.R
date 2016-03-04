@@ -1,25 +1,43 @@
-#Organically grows or reduces collectors and column names for Amazon CloudFront files to compensate for changes
-#in the number of fields. Kind of icky but it works and looks great from the user end, so..
+# Organically grows or reduces collectors and column names for Amazon CloudFront
+# files to compensate for changes in the number of fields. Kind of icky but it
+# works and looks great from the user end, so..
+# 
 aws_header_select <- function(header_fields){
-  field_names <- c("date", "time", "x-edge-location", "sc-bytes", "c-ip", "cs-method",
-                   "cs(Host)", "cs-uri-stem", "sc-status", "cs(Referer)", "cs(User-Agent)", "cs-uri-query",
-                   "cs(Cookie)", "x-edge-result-type", "x-edge-request-id", "x-host-header", "cs-protocol", "cs-bytes",
-                   "time-taken")
   
-  new_names <- c("date", "time", "edge_location", "bytes_sent", "ip_address", "http_method", "host", "path",
-                 "status_code", "referer", "user_agent", "query", "cookie", "result_type", "request_id",
-                 "host_header", "protocol", "bytes_received", "time_elapsed")
+  field_names <- c("date", "time", "x-edge-location", "sc-bytes", "c-ip",
+                   "cs-method", "cs(Host)", "cs-uri-stem", "sc-status",
+                   "cs(Referer)", "cs(User-Agent)", "cs-uri-query", 
+                   "cs(Cookie)", "x-edge-result-type", "x-edge-request-id", 
+                   "x-host-header", "cs-protocol", "cs-bytes", "time-taken",
+                   "x-forwarded-for", "ssl-protocol", "ssl-cipher", 
+                   "x-edge-response-result-type")
   
-  collectors <- list(col_character(), col_character(), col_character(), col_integer(), col_character(),
-                     col_character(), col_character(), col_character(), col_integer(), col_character(),
-                     col_character(), col_character(), col_character(), col_character(), col_character(),
-                     col_character(), col_character(), col_character(), col_number())
-  if(length(header_fields) == length(field_names) && all(header_fields == field_names)){
+
+  new_names <- c("date", "time", "edge_location", "bytes_sent", "ip_address",
+                 "http_method", "host", "path", "status_code", "referer",
+                 "user_agent", "query", "cookie", "result_type", "request_id",
+                 "host_header", "protocol", "bytes_received", "time_elapsed",
+                 "forwarded_for", "ssl_protocol", "ssl_cipher", 
+                 "response_result_type")
+  
+  collectors <- list(col_character(), col_character(), col_character(),
+                     col_integer(), col_character(), col_character(), 
+                     col_character(), col_character(), col_integer(), 
+                     col_character(), col_character(), col_character(),
+                     col_character(), col_character(), col_character(),
+                     col_character(), col_character(), col_character(),
+                     col_number(), col_character(), col_character(), 
+                     col_character(), col_character()
+  )
+  
+  if(length(header_fields) == length(field_names) &&
+     all(header_fields == field_names)) {
     return(list(new_names, collectors))
   }
   
   out_names <- character()
   out_collectors <- list()
+  
   for(field in header_fields){
     location <- which(field_names == field)[1]
     out_names <- append(out_names, new_names[location])
