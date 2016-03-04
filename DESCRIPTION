@@ -1,7 +1,7 @@
 Package: webreadr
 Type: Package
 Title: Tools for Reading Formatted Access Log Files
-Version: 0.4.0
+Version: 0.4.999999999
 Date: 2016-01-23
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>

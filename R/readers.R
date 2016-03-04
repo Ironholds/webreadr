@@ -158,31 +158,34 @@ read_squid <- function(file, has_header = FALSE){
 }
 
 #'@title read Amazon CloudFront access logs
-#'@description Amazon CloudFront uses access logs with a standard format described
-#'\href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{
-#'on their website}. \code{read_aws} reads these files in; due to the Amazon treatment of header lines,
-#'it is capable of organically detecting whether files lack common fields, and compensating for that. See
-#'"Details"
-#'
+#'@description Amazon CloudFront uses access logs with a standard format
+#'  described 
+#'  \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{
+#'   on their website}. \code{read_aws} reads these files in; due to the Amazon 
+#'  treatment of header lines, it is capable of organically detecting whether 
+#'  files lack common fields, and compensating for that. See "Details"
+#'  
 #'@param file the full path to the AWS file you want to read.
-#'
-#'@details
-#'Amazon CloudFront uses tab-separated files with 
-#'\href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{
-#'Amazon-specific fields}. This can be changed by individual CloudFront users, however, to exclude particular fields,
-#'and historically has contained fewer fields than it now does. Luckily, Amazon's insistence on standardisation in field
-#'names means that we can organically detect if fields are missing, and compensate for that before reading in the file.
-#'
-#'If no fields are missing, the fields returned will be:
-#'
+#'  
+#'@details Amazon CloudFront uses tab-separated files with 
+#'  \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html}{
+#'   Amazon-specific fields}. This can be changed by individual CloudFront
+#'  users, however, to exclude particular fields, and historically has contained
+#'  fewer fields than it now does. Luckily, Amazon's insistence on
+#'  standardisation in field names means that we can organically detect if
+#'  fields are missing, and compensate for that before reading in the file.
+#'  
+#'  If no fields are missing, the fields returned will be:
+#'  
 #'\itemize{
 #'  \item{date:} {the date and time when the request was \emph{completed}}
-#'  \item{time_elapsed:} {the amount of time (in milliseconds) that the connection and fulfilment
-#'  of the request lasted for.}
-#'  \item{edge_location:} {the Amazon edge location that served the request, identified by a three-letter
-#'  code. See the Amazon documentation for more details.}
-#'  \item{bytes_sent:} {a count of the number of bytes sent by the server to the client, including headers,
-#'  to fulfil the request.}
+#'  \item{time_elapsed:} {the amount of time (in milliseconds) that the
+#'  connection and fulfilment of the request lasted for.}
+#'  \item{edge_location:} {the Amazon edge location that served the request,
+#'  identified by a three-letter code. See the Amazon documentation for more
+#'  details.}
+#'  \item{bytes_sent:} {a count of the number of bytes sent by the server to the
+#'  client, including headers, to fulfil the request.}
 #'  \item{ip_address:} {the IP address of the client making the request.}
 #'  \item{http_method:} {the HTTP method (POST, GET, etc) used.}
 #'  \item{host:} {the CloudFront host name.}
@@ -190,21 +193,40 @@ read_squid <- function(file, has_header = FALSE){
 #'  \item{status_code:} {the HTTP status code associated with the request.}
 #'  \item{referer:} {the referer associated with the request.}
 #'  \item{user_agent:} {the user agent of the client that made the request.}
-#'  \item{query:} {the query string associated with the request; if there is no query string,
-#'  this will be a dash.}
-#'  \item{cookie:} {the cookie header from the request, stored as name-value pairs. When no
-#'  cookie header is provided, or it is empty, this will be a dash.}
-#'  \item{result_type:} {the result of the request. This is similar to Squid response codes (
-#'  see \code{\link{read_squid}}) but Amazon-specific; their documentation contains details on
-#'  what each code means.}
+#'  \item{query:} {the query string associated with the request; if there is no
+#'  query string, this will be a dash.}
+#'  \item{cookie:} {the cookie header from the request, stored as name-value
+#'  pairs. When no cookie header is provided, or it is empty, this will be a
+#'  dash.}
+#'  \item{result_type:} {the result of the request. This is similar to Squid
+#'  response codes ( see \code{\link{read_squid}}) but Amazon-specific; their
+#'  documentation contains details on what each code means.}
 #'  \item{request_id:} {A hashed unique identifier for each request.}
-#'  \item{host_header: }{the host header of the requested asset. While \code{host} will always
-#'  be the CloudFront host name, \code{host_header} contains alternate domain names (or 'CNAMES')
-#'  when the CloudFront distribution is using them}.
+#'  \item{host_header: }{the host header of the requested asset. While
+#'  \code{host} will always be the CloudFront host name, \code{host_header}
+#'  contains alternate domain names (or 'CNAMES') when the CloudFront
+#'  distribution is using them}.
 #'  \item{protocol: } {the protocol used in the request (http/https).}
 #'  \item{bytes_received: }{client-to-server bytes, including headers.}
-#'  \item{time_elapsed:} {the time elapsed, in seconds, between the time the request was received and
+#'  \item{time_elapsed:} {the time elapsed, in seconds, between the time the
+#'  request was received and
 #'  the time the server completed responding to it.}
+#'  \item{forwarded_for: }{If the viewer used an HTTP proxy or a load balancer
+#'  to send the request, the value of \code{ip_address} is the IP address of the
+#'  proxy or load balancer. In that case, x-forwarded-for is the IP address of
+#'  the viewer that originated the request. If the viewer did not use an HTTP
+#'  proxy or a load balancer, the value of \code{forwarded_for} is a hyphen
+#'  (-).}
+#'  \item{ssl_protocol: }{When \code{cs_protocol} is https, the SSL protocol
+#'  that the client and CloudFront negotiated for encrypting the request and
+#'  response. When \code{cs_protocol} is http, the value for \code{ssl-protocol}
+#'  is a hyphen (-).}
+#'  \item{ssl_cipher: }{When \code{cs_protocol} is https, the SSL cipher that
+#'  the client and CloudFront negotiated for encrypting the request and
+#'  response. When \code{cs_protocol} is http, the value for \code{ssl_cipher}
+#'  is a hyphen (-).}
+#'  \item{response_result_type: }{How CloudFront classified the response just
+#'  before returning the response to the viewer.}
 #'}
 #'
 #'@seealso \code{\link{read_s3}}, for Amazon S3 files,
@@ -218,8 +240,10 @@ read_squid <- function(file, has_header = FALSE){
 read_aws <- function(file){
   header_fields <- unlist(strsplit(read_lines(file, n_max = 2)[2], " "))[-1]
   formatters <- aws_header_select(header_fields)
-  data <- read_delim(file = file, delim = "\t", escape_backslash = FALSE, col_names = formatters[[1]],
-                     col_types = formatters[[2]], skip = 2)
+  data <- read_delim(file = file, delim = "\t", escape_backslash = FALSE,
+                     col_names = formatters[[1]], col_types = formatters[[2]],
+                     skip = 2)
+  
   if(all(c("date","time") %in% names(data))){
     data$date <- as.POSIXct(paste(data$date, data$time), tz = "UTC")
     return(data[,!names(data) == "time"])
