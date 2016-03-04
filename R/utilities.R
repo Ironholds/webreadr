@@ -1,7 +1,7 @@
 # Organically grows or reduces collectors and column names for Amazon CloudFront
 # files to compensate for changes in the number of fields. Kind of icky but it
 # works and looks great from the user end, so..
-# 
+
 aws_header_select <- function(header_fields){
   
   field_names <- c("date", "time", "x-edge-location", "sc-bytes", "c-ip",
