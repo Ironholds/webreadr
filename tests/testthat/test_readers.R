@@ -33,7 +33,7 @@ test_that("Combined Log Format files can be read",{
 
 test_that("AWS files can be read",{
   data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
-  expect_equal(ncol(data), 18)
+  expect_equal(ncol(data), 22)
   expect_equal(nrow(data), 2)
   expect_equal(class(data$date), c("POSIXct","POSIXt"))
 })
