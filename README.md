@@ -1,13 +1,12 @@
-## webreadr
-
+## Read access log data in R
 
 __Author:__ Oliver Keyes<br/>
 __License:__ [MIT](http://opensource.org/licenses/MIT)<br/>
 __Status:__ Stable
 
-![downloads](http://cranlogs.r-pkg.org/badges/grand-total/WikidataR)
+[![Travis-CI Build Status](https://travis-ci.org/Ironholds/webreadr.svg?branch=master)](https://travis-ci.org/Ironholds/webreadr) ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/webreadr)
 
-<code>webreadr</code> provides utilities for reading access log data in R. It is capable of handling logs in
+`webreadr` is an access log reader for R. It is capable of handling logs in
 Squid, Apache, Varnish, NGINX or AWS's usual formats, and is based around Hadley Wickham's `readr` package for
 maximum speed. See the [vignette](https://github.com/Ironholds/webtools/blob/master/vignettes/Introduction.Rmd)
 for more information, and if you have requests for additional features, open an [issue](https://github.com/Ironholds/webtools/issues).
@@ -24,8 +23,3 @@ For the development version:
 
     library(devtools)
     install_github("ironholds/webreadr")
-
-### Dependencies
-* R >= 3.1.0.
-* [readr](https://github.com/hadley/readr)
-* [Rcpp](http://cran.rstudio.com/web/packages/Rcpp/)
