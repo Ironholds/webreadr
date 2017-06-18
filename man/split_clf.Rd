@@ -39,4 +39,3 @@ s3_requests <- split_clf(s3_data$uri)
 \code{\link{read_clf}} and \code{\link{read_combined}} for reading
 in these files.
 }
-

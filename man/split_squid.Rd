@@ -34,4 +34,3 @@ statuses <- split_squid(data$status_code)
 and \code{\link{split_clf}} for similar parsing of multi-field
 columns in Common/Combined Log Format (CLF) data.
 }
-

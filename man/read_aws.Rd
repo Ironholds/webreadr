@@ -89,4 +89,3 @@ data <- read_aws(system.file("extdata/log.aws", package = "webreadr"))
 \code{\link{read_clf}} for the Common Log Format, \code{\link{read_squid}} and
 \code{\link{read_combined}}.
 }
-

@@ -37,4 +37,3 @@ data <- read_combined(system.file("extdata/combined_log.clf", package = "webread
 \code{\link{read_clf}} for the /Common/ Log Format, and
 \code{\link{split_clf}} for splitting out the "requests" field.
 }
-

@@ -59,4 +59,3 @@ s3_data <- read_s3(system.file("extdata/s3.log", package = "webreadr"))
 \code{\link{read_aws}} for reading Amazon Web Services (AWS) access log files,
 and \code{\link{split_clf}}, which works well on the \code{uri} field from S3 files.
 }
-

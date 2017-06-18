@@ -50,4 +50,3 @@ data <- read_squid(system.file("extdata/log.squid", package = "webreadr"))
 \code{\link{read_clf}} for the Common Log Format (also used by Squids), and
 \code{\link{split_squid}} for splitting the "status_code" field into its component parts.
 }
-

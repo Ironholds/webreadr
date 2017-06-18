@@ -50,4 +50,3 @@ data <- read_clf(system.file("extdata/log.clf", package = "webreadr"))
 \code{\link{read_combined}} for the /Combined/ Log Format, and
 \code{\link{split_clf}} for splitting out the "requests" field.
 }
-

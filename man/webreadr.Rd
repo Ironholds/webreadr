@@ -7,4 +7,3 @@
 see the \href{https://github.com/Ironholds/webreadr/blob/master/vignettes/Introduction.Rmd}{introductory vignette}
 for more details!
 }
-
