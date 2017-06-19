@@ -5,10 +5,9 @@ Version: 0.4.999999999
 Date: 2016-01-23
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
-Description: R is used by a vast array of people for a vast array of purposes
-    - including web analytics. This package contains functions for consuming and
-    munging various common forms of request log, including the Common and Combined
-    Web Log formats and various Amazon access logs.
+Description: Read and tidy various common forms of web request log,
+    including the Common and Combined Web Log formats and various
+    Amazon access log types.
 License: MIT + file LICENSE
 BugReports: https://github.com/Ironholds/webreadr/issues
 URL: https://github.com/Ironholds/webreadr
