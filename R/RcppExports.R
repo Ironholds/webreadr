@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 internal_split_clf <- function(requests) {
-    .Call(webreadr_internal_split_clf, requests)
+    .Call(`_webreadr_internal_split_clf`, requests)
 }
 
 internal_split_squid <- function(requests) {
-    .Call(webreadr_internal_split_squid, requests)
+    .Call(`_webreadr_internal_split_squid`, requests)
 }
 

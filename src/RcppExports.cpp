@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // internal_split_clf
 DataFrame internal_split_clf(CharacterVector requests);
-RcppExport SEXP webreadr_internal_split_clf(SEXP requestsSEXP) {
+RcppExport SEXP _webreadr_internal_split_clf(SEXP requestsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,7 +18,7 @@ END_RCPP
 }
 // internal_split_squid
 DataFrame internal_split_squid(CharacterVector requests);
-RcppExport SEXP webreadr_internal_split_squid(SEXP requestsSEXP) {
+RcppExport SEXP _webreadr_internal_split_squid(SEXP requestsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -26,4 +26,15 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(internal_split_squid(requests));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_webreadr_internal_split_clf", (DL_FUNC) &_webreadr_internal_split_clf, 1},
+    {"_webreadr_internal_split_squid", (DL_FUNC) &_webreadr_internal_split_squid, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_webreadr(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
