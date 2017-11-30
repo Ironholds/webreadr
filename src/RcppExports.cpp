@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // internal_split_clf
 DataFrame internal_split_clf(CharacterVector requests);
-RcppExport SEXP webreadr_internal_split_clf(SEXP requestsSEXP) {
+RcppExport SEXP _webreadr_internal_split_clf(SEXP requestsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,7 +18,7 @@ END_RCPP
 }
 // internal_split_squid
 DataFrame internal_split_squid(CharacterVector requests);
-RcppExport SEXP webreadr_internal_split_squid(SEXP requestsSEXP) {
+RcppExport SEXP _webreadr_internal_split_squid(SEXP requestsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

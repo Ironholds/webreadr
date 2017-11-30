@@ -310,3 +310,24 @@ read_s3 <- function(file){
   data$request_time <- readr::parse_datetime(data$request_time, format = "%d/%b/%Y:%H:%M:%S %z")
   return(data)
 }
+
+#'@title Read Microsoft IIS Logs
+#'@description \code{read_iis} provides a reader for Microsoft IIS access logs.
+#'
+#'@param file the full path to the IIS log file you want to read.
+#'
+#'@examples
+#'# Using the inbuilt testing dataset
+#'iis_data <- read_iis(system.file(file.path("extdata", "iis.log"), package = "webreadr"))
+#'
+#'@export
+
+read_iis <- function(file){
+  names <- c("date", "time", "s-ip", "cs-method", "cs-uri-stem", "cs-uri-query", "s-port", 
+             "cs-username", "c-ip", "cs(User-Agent)", "sc-status", "sc-substatus", 
+             "sc-win32-status", "time-taken")
+  types <- "cccccciccciiii"
+  data <- readr::read_log(file = file, col_types = types, col_names = names, skip = 4)
+  data$date <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%dT%H:%M:%S %z", tz = "UTC")
+  return(data[,!names(data) == "time"])
+}

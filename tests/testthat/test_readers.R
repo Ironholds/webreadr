@@ -46,3 +46,10 @@ test_that("S3 files can be read",{
   expect_equal(nrow(data), 6)
   expect_equal(class(data$request_time), c("POSIXct","POSIXt"))
 })
+
+test_that("iis files can be read",{
+  data <- read_iis(system.file(file.path("extdata", "iis.log"), package = "webreadr"))
+  expect_equal(ncol(data), 14)
+  expect_equal(nrow(data), 1)
+  expect_equal(class(data$date), c("POSIXct","POSIXt"))
+})
