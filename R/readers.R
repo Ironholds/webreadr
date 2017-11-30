@@ -326,8 +326,8 @@ read_iis <- function(file){
   names <- c("date", "time", "s-ip", "cs-method", "cs-uri-stem", "cs-uri-query", "s-port", 
              "cs-username", "c-ip", "cs(User-Agent)", "sc-status", "sc-substatus", 
              "sc-win32-status", "time-taken")
-  types <- "cccccciccciiii"
-  data <- readr::read_log(file = file, col_types = types, col_names = names, skip = 4)
-  data$date <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%dT%H:%M:%S %z", tz = "UTC")
+  types <- "cccccciccciidi"  
+  data <- readr::read_delim(file = file, delim = ' ', col_names = names, col_types = types, skip = 4, na = '-')
+  data$date <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%d %H:%M:%S")
   return(data[,!names(data) == "time"])
 }
