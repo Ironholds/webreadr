@@ -324,14 +324,24 @@ read_s3 <- function(file){
 
 read_iis <- function(file){
   #read in the text file to search for server restarts
-  raw_file <- readLines(file)
-  mask <- !substr(raw_file, 1, 1)=="#"  
+  raw_file <- readr::read_lines(file)
+  file <- raw_file[!substr(raw_file, 1, 1) == "#"]
   
-  names <- c("date", "time", "s-ip", "cs-method", "cs-uri-stem", "cs-uri-query", "s-port", 
-             "cs-username", "c-ip", "cs(User-Agent)", "sc-status", "sc-substatus", 
-             "sc-win32-status", "time-taken")
-  types <- "cccccciccciidi"
-  data <- readr::read_delim(file = paste(raw_file[mask], collapse = '\n'), delim = ' ', col_names = names, col_types = types, na = '-')
-  data$date <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%d %H:%M:%S")
-  return(data[,!names(data) == "time"])
+  names <- c("date", "time", "server_ip", "cs_method", "cs_uri_stem",
+             "cs_uri_query", "server_port", "cs_username", "client_ip",
+             "user_agent", "referer", "sc_status", "sc_substatus", 
+             "sc_win32_status", "time_taken")
+  types <- "ccccccicccciidi"
+  
+  # If the file is only 1 line, we need to do something different
+  if(length(file) == 1){
+    file <- paste0(file, "\n")
+  } else {
+    file <- paste(file, collapse = "\n")
+  }
+  
+  data <- readr::read_delim(file = file, delim = " ", col_names = names,
+                            col_types = types, na = "-")
+  data$timestamp <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%d %H:%M:%S")
+  return(data[,!names(data) %in% c("date", "time")])
 }
