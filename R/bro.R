@@ -69,8 +69,8 @@ read_bro_conn <- function(file, metadata){
   col_names <- c("timestamp", "uid", "origin_host", "origin_port", "response_host", 
                  "response_port", "protocol", "service", "duration", "origin_bytes", 
                  "response_bytes", "conn_state", "origin_local", "response_local", 
-                 "missed_bytes", "history", "origin_packets", "origin_bytes", 
-                 "response_packets", "response_bytes")
+                 "missed_bytes", "history", "origin_ip_packets", "origin_ip_bytes", 
+                 "response_ip_packets", "response_ip_bytes")
   names(col_names) <- c("n", "c", "c", "n", "c", "n", "c", "c", "n", "n", "n", "c", 
                         "n", "n", "c", "i", "i", "i", "i", "c")
   old_names <- c("ts", "uid", "id.orig_h", "id.orig_p", "id.resp_h", "id.resp_p", 
@@ -269,6 +269,21 @@ read_bro_http <- function(file, metadata){
   return(data)
 }
 
+#'@title Read bro logfiles
+#'@description This function reads logfiles exported from 'bro', automatically
+#'detecting and handling different types of log and returning them as data.frames.
+#'The full range of bro files are not yet supported, but more will be added over time.
+#'
+#'@param file the path to the logfile you want to read in
+#'
+#'@examples 
+#'# Read an FTP log
+#'data <- read_bro(system.file("extdata/ftp.log", package = "webreadr"))
+#'
+#'@seealso \code{\link{read_clf}}, \code{\link{read_squid}} and other readers for
+#'different log formats.
+#'
+#'@export
 read_bro <- function(file){
   
   # Read the metadata to check what kind of file we have.

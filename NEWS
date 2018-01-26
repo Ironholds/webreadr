@@ -1,9 +1,19 @@
+Version 0.5.0
+-------------------------------------------------------------------------
+NEW FEATURES
+
+* Beta support (stop laughing) for 'bro' (I mean it) logs is now provided through read_bro()
+* Microsoft IIS files can be read with read_iis(). Thanks to Andrew Martin for the work there.
+
+BUG FIXES
+* An issue preventing splitters from correctly filling NAs is fixed.
+
+
 Version 0.4.0
 -------------------------------------------------------------------------
 
 NEW FEATURES
-* Amazon S3 bucket access logs are now supported with read_s3(). Thanks to Hadley Wickham
-for the feature request.
+* Amazon S3 bucket access logs are now supported with read_s3(). Thanks to Hadley Wickham for the feature request.
 
 BUG FIXES
 * For consistency purposes, date-times will be POSIXct rather than occasionally POSIXlt
