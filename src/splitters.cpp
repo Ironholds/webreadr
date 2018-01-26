@@ -47,6 +47,10 @@ DataFrame internal_split_clf(CharacterVector requests){
   
   for(unsigned int i = 0; i < input_length; i++){
     
+    if((i % 10000) == 0){
+      Rcpp::checkUserInterrupt();
+    }
+    
     // Handle the case where the input is an NA
     if(requests[i] == NA_STRING){
       
@@ -80,6 +84,10 @@ DataFrame internal_split_squid(CharacterVector requests){
   CharacterVector holding;
   
   for(unsigned int i = 0; i < input_length; i++){
+    
+    if((i % 10000) == 0){
+      Rcpp::checkUserInterrupt();
+    }
     
     // Handle the case where the input is an NA
     if(requests[i] == NA_STRING){
