@@ -13,7 +13,8 @@ CharacterVector split_single(std::string entry, std::string separator,
   int max_hit = 0;
   
   if(location == std::string::npos){
-    output[0] = entry.substr(start);
+    output[0] = entry;
+    max_hit++;
   } else {
     while(location != std::string::npos && max_hit < (max_length + 1)){
       output[max_hit] = entry.substr(start, location - start);
@@ -22,12 +23,14 @@ CharacterVector split_single(std::string entry, std::string separator,
       max_hit++;
       if(location == std::string::npos && max_hit < (max_length + 1)){
         output[max_hit] = entry.substr(start);
+        max_hit++;
       }
     }
   }
   
-  while((max_hit+1) < max_length){
-    output.push_back(NA_STRING);
+  while(max_hit < (max_length + 1)){
+    output[max_hit] = NA_STRING;
+    max_hit++;
   }
   
   return output;
