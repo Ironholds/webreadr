@@ -51,5 +51,5 @@ test_that("iis files can be read",{
   data <- read_iis(system.file(file.path("extdata", "iis.log"), package = "webreadr"))
   expect_equal(ncol(data), 14)
   expect_equal(nrow(data), 1)
-  expect_equal(class(data$date), c("POSIXct","POSIXt"))
+  expect_equal(class(data$timestamp), c("POSIXct","POSIXt"))
 })
