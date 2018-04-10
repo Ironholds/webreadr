@@ -19,15 +19,15 @@ data from access logs and other sources of web request data.
 
 ## File reading
 Base R has read.delim, which is convenient but much slower for file reading than Hadley's new [readr](https://github.com/hadley/readr)
-package. <code>webtools</code> defines a set of wrapper functions around readr's <code>read_delim</code>, designed
+package. <code>webreadr</code> defines a set of wrapper functions around readr's <code>read_delim</code>, designed
 for common access log formats.
 
-The most common historical log format is the [Combined Log Format](http://httpd.apache.org/docs/1.3/logs.html#combined); this is used as one of the default formats for [nginx](http://nginx.org/) and the [Varnish caching system](https://www.varnish-cache.org/docs/trunk/reference/varnishncsa.html). <code>webtools</code>
+The most common historical log format is the [Combined Log Format](http://httpd.apache.org/docs/1.3/logs.html#combined); this is used as one of the default formats for [nginx](http://nginx.org/) and the [Varnish caching system](https://www.varnish-cache.org/docs/trunk/reference/varnishncsa.html). <code>webreadr</code>
 lets you read it in trivially with <code>read\_combined</code>:
 
 ```{r}
 library(webreadr)
-#read in an example file that comes with the webtools package
+#read in an example file that comes with the webreadr package
 data <- read_combined(system.file("extdata/combined_log.clf", package = "webreadr"))
 #And if we look at the format...
 str(data)
@@ -62,5 +62,5 @@ A similar function, <code>split\_squid</code>, exists for the `status\_code` fie
 
 ## Other ideas
 If you have ideas for other URL handlers that would make access log processing easier, the best approach
-is to either [request it](https://github.com/Ironholds/webtools/issues) or [add it](https://github.com/Ironholds/webtools/pulls)!
+is to either [request it](https://github.com/Ironholds/webreadr/issues) or [add it](https://github.com/Ironholds/webreadr/pulls)!
 
