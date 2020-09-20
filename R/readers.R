@@ -227,6 +227,27 @@ read_squid <- function(file, has_header = FALSE){
 #'  is a hyphen (-).}
 #'  \item{response_result_type: }{How CloudFront classified the response just
 #'  before returning the response to the viewer.}
+#'  \item{protocol_version: }{The HTTP version that the viewer specified in the
+#'  request.}
+#'  \item{fle_status: }{When field-level encryption is configured for a
+#'  distribution, this field contains a code that indicates whether the request
+#'  body was successfully processed.}
+#'  \item{fle_encrypted_fields: }{The number of fields that CloudFront encrypted
+#'  and forwarded to the origin.}
+#'  \item{port: }{The port number of the request from the viewer.}
+#'  \item{time_to_first_byte: }{The number of seconds between receiving the
+#'  request and writing the first byte of the response, as measured on the
+#'  server.}
+#'  \item{detailed_result_type: }{When \code{result_type} is not Error, this
+#'  field contains the same value as \code{result_type}.}
+#'  \item{content_type: }{The value of the HTTP Content-Type header of the
+#'  response.}
+#'  \item{content_length: }{The value of the HTTP Content-Length header of
+#'  the response.}
+#'  \item{content_range_start: }{When the response contains the HTTP
+#'  Content-Range header, this field contains the range start value.}
+#'  \item{content_range_end: }{When the response contains the HTTP
+#'  Content-Range header, this field contains the range end value.}
 #'}
 #'
 #'@seealso \code{\link{read_s3}}, for Amazon S3 files,
