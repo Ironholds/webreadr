@@ -36,7 +36,7 @@ aws_header_select <- function(header_fields){
                      col_number(), col_character(), col_character(), 
                      col_character(), col_character(), col_character(),
                      col_character(), col_integer(), col_integer(),
-                     col_number(), col_character(), col_integer(),
+                     col_number(), col_character(), col_character(),
                      col_integer(), col_integer(), col_integer())
   
   if(length(header_fields) == length(field_names) &&

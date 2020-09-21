@@ -263,7 +263,7 @@ read_aws <- function(file){
   formatters <- aws_header_select(header_fields)
   data <- read_delim(file = file, delim = "\t", escape_backslash = FALSE,
                      col_names = formatters[[1]], col_types = formatters[[2]],
-                     skip = 2)
+                     skip = 2, na = c("", "NA", "-"))
   
   if(all(c("date","time") %in% names(data))){
     data$date <- as.POSIXct(paste(data$date, data$time), tz = "UTC")
