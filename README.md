@@ -22,4 +22,4 @@ For the released version:
 For the development version:
 
     library(devtools)
-    install_github("ironholds/webreadr", INSTALL_opts = c("--no-multiarch"))
+    install_github("ironholds/webreadr")
