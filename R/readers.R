@@ -366,3 +366,38 @@ read_iis <- function(file){
   data$timestamp <- as.POSIXct(paste(data$date, data$time), format = "%Y-%m-%d %H:%M:%S")
   return(data[,!names(data) %in% c("date", "time")])
 }
+
+#'@title Read AWS ELB Access Logs
+#'@description \code{read_elb} provides a reader for AWS ELB access logs.
+#'
+#'@param file the full path to the ELB log file you want to read.
+#'
+#'@examples
+#'# Using the inbuilt testing dataset
+#'data <- read_elb(system.file("extdata/log.elb", package = "webreadr"))
+#'
+#'@export
+read_elb <- function(file){
+    names <- c("type", "time", "elb", "client", "target", "request_processing_time",
+               "target_processing_time", "response_processing_time", "elb_status_code",
+               "target_status_code", "received_bytes", "sent_bytes", "request",
+               "user_agent", "ssl_cipher", "ssl_protocol", "target_group_arn", "trace_id",
+               "domain_name", "chosen_cert_arn", "matched_rule_priority",
+               "request_creation_time", "actions_executed", "redirect_url", "error_reason",
+               "target_list", "target_status_code_list", "classification",
+               "classification_reason")
+    types <- "cTcccdddiiiicccccccciTccccccc"
+
+    data <- readr::read_log(file = file, col_types = types, col_names = names)
+
+    # Mutate some fields for convenience
+    data$client_ip <-strsplit(data$client, ":")[[1]][1]
+    data$client_port <- strsplit(data$client, ":")[[1]][2]
+    data$target_ip <- strsplit(data$target, ":")[[1]][1]
+    data$target_port <- strsplit(data$target, ":")[[1]][2]
+    data$method <- strsplit(data$request, " " )[[1]][1]
+    data$uri <- strsplit(data$request, " " )[[1]][2]
+    data$version <- strsplit(data$request, " " )[[1]][3]
+
+    return(data)
+}

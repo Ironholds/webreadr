@@ -53,3 +53,23 @@ test_that("iis files can be read",{
   expect_equal(nrow(data), 1)
   expect_equal(class(data$timestamp), c("POSIXct","POSIXt"))
 })
+
+test_that("ELB files can be read",{
+  data <- read_elb(system.file(file.path("extdata", "log.elb"), package = "webreadr"))
+
+  # ensure the correct dimensions
+  expect_equal(ncol(data), 36)
+  expect_equal(nrow(data), 5)
+
+  expect_equal(class(data$time), c("POSIXct","POSIXt"))
+  expect_equal(class(data$request_creation_time), c("POSIXct","POSIXt"))
+
+  # ensure the custom parsed fields are correct
+  expect_equal(data$client_ip[1], "1.1.1.1")
+  expect_equal(data$client_port[1], "61827")
+  expect_equal(data$target_ip[1], "172.31.136.21")
+  expect_equal(data$target_port[1], "4242")
+  expect_equal(data$method[1], "GET")
+  expect_equal(data$uri[1], "https://mydomain.com/test")
+  expect_equal(data$version[1], "HTTP/2.0")
+})

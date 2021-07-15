@@ -30,8 +30,8 @@ library(webtools)
 ## 
 ## The following objects are masked from 'package:webreadr':
 ## 
-##     read_aws, read_clf, read_combined, read_squid, split_clf,
-##     split_squid
+##     read_aws, read_clf, read_combined, read_elb, read_iis,
+##     read_squid, read_s3, split_clf, split_squid
 ```
 
 ```r
